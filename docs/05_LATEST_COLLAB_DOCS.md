@@ -105,7 +105,8 @@ roles/{role}/_archive/
 | 主题 | 路径 | 状态 | 当前结论 |
 |---|---|---|---|
 | API 接口契约 | `docs/collaboration/api/` | active | **跨角色单一权威**;后端 LLM 主维护,代码侧契约改动后同步本目录;详见 `docs/collaboration/api/README.md` |
-| quote_ref 聊天消息引用 | `docs/collaboration/quote-ref/` | active | PM 拍板 → 后端实现 → 字段冲突双方修齐 → Android Phase 3 UI 完成,后端已发布联调启动文档,**等安卓发请求** |
+| quote_ref 聊天消息引用 | `docs/collaboration/quote-ref/` | active | PM 拍板 → 后端实现 → 联调期 7 轮改进 → 后端 OK,**等前端重跑用例 3/4** |
+| 主动消息(proactive messages)| `docs/collaboration/proactive-messages/` | active | 后端 Phase 2b-1 起已跑通,**前端待接入** `/users/{id}/subscribe` SSE |
 
 quote_ref 当前协作文件(按时间序):
 
