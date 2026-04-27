@@ -1,0 +1,26 @@
+name: Cross Functional Question
+description: 跨角色问题
+title: "[Cross] 问题："
+labels: ["role:cross", "type:question", "status:needs-pm"]
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: 问题
+    validations:
+      required: true
+  - type: textarea
+    id: topic
+    attributes:
+      label: 协作主题目录
+      description: 例如 docs/collaboration/quote-ref/
+  - type: textarea
+    id: options
+    attributes:
+      label: 候选方案
+    validations:
+      required: true
+  - type: textarea
+    id: recommendation
+    attributes:
+      label: 推荐方案

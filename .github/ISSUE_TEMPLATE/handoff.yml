@@ -1,0 +1,21 @@
+name: Handoff
+description: 正式交接
+title: "[Handoff] "
+labels: ["type:handoff"]
+body:
+  - type: textarea
+    id: from_to
+    attributes:
+      label: 交接双方
+    validations:
+      required: true
+  - type: textarea
+    id: files
+    attributes:
+      label: 交付文件
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 验收标准
