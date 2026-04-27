@@ -23,3 +23,13 @@
 3. 为每个模型新增 memory/ 文件夹。
 4. quote_ref 功能已完成 PM 拍板，等待前后端执行。
 ```
+
+---
+
+## 2026-04-27 结构收敛
+
+```text
+仓库已收敛为最小结构：五角色 memory、五角色 completed_design_files、docs/collaboration 公共协作区、docs/05_LATEST_COLLAB_DOCS.md。
+设计侧后续只需要维护 roles/design/memory/ 与 roles/design/completed_design_files/。
+视觉规则继续以 v0.3.1 为准：眼睛固定，眼镜可变。
+```

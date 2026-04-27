@@ -58,3 +58,13 @@
 - 安卓前端 Phase 3 UI 完成后联调。
 - 没有后端阻塞项。
 ```
+
+---
+
+## 2026-04-27 结构收敛
+
+```text
+仓库已收敛为最小结构：五角色 memory、五角色 completed_design_files、docs/collaboration 公共协作区、docs/05_LATEST_COLLAB_DOCS.md。
+后端侧后续只维护 roles/backend/memory/ 与 roles/backend/completed_design_files/。
+docs/adr、docs/handoffs、docs/shared 已移除；重大决策沉淀到最新追踪表与相关角色 memory。
+```

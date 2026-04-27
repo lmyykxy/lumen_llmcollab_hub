@@ -23,3 +23,15 @@
 3. 为每个模型新增 memory/ 文件夹。
 4. quote_ref 功能已完成 PM 拍板，等待前后端执行。
 ```
+
+---
+
+## 2026-04-27 结构收敛
+
+```text
+仓库已收敛为最小结构：五角色 memory、五角色 completed_design_files、docs/collaboration 公共协作区、docs/05_LATEST_COLLAB_DOCS.md。
+Android 侧后续只维护 roles/android/memory/ 与 roles/android/completed_design_files/。
+
+quote_ref：Android 已完成 Phase 1 数据层和 Phase 2 ViewModel；后端已确认字段并完成适配。
+下一步是 Android Phase 3 UI：长按引用、Composer 引用预览、气泡 QuoteBlock、点击滚动定位、端到端联调。
+```

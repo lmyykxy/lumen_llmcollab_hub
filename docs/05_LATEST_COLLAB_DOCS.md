@@ -1,126 +1,210 @@
 # 最新协作文档追踪表
 
-> 五个大模型开始任何任务前，先读本文件。  
-> 当前结构版本：v0.5  
-> 本版新增：每个角色都有自己的 `memory/` 目录。
+> 五个模型开始任何任务前，先读本文件。
+> 当前结构版本：v0.6
+> 本版变更：仓库收敛为最小协作结构，只保留角色记忆、角色正式文档、公共协作区和本追踪表。
 
 ---
 
-## 1. 当前结构规则
+## 1. 当前项目状态
 
-### 角色正式成果与记忆
+Lumen / 陆小七是单一精品角色的生活流 AI 伴侣系统。
+本仓库不是 App 源码仓库，只保存五模型协作所需的长期记忆、正式文档、公共协作记录和最新追踪。
 
-| 角色 | 已完成设计文件 | 角色记忆 | 历史归档 |
-|---|---|---|---|
-| PM | `roles/pm/completed_design_files/` | `roles/pm/memory/` | `roles/pm/_archive/` |
-| 设计 | `roles/design/completed_design_files/` | `roles/design/memory/` | `roles/design/_archive/` |
-| 安卓 | `roles/android/completed_design_files/` | `roles/android/memory/` | `roles/android/_archive/` |
-| 后端 | `roles/backend/completed_design_files/` | `roles/backend/memory/` | `roles/backend/_archive/` |
-| 模型设计 | `roles/model/completed_design_files/` | `roles/model/memory/` | `roles/model/_archive/` |
-
-### 统一协作区
-
-所有协作中内容统一放：
+当前优先级：
 
 ```text
-docs/collaboration/{topic}/
+P0：quote_ref 聊天消息引用前后端闭环与 Android Phase 3 UI 联调
+P1：前端 6 屏 MVP 稳定
+P2：后端模型层接入 PromptRegistry / 小七人格文件
+P3：日记 / 相册 / 图片详情后续扩展
 ```
 
-### 正式交接区
+---
 
-跨角色正式交接放：
+## 2. 保留结构
 
 ```text
-docs/handoffs/{from-to-or-topic}/
+docs/
+  05_LATEST_COLLAB_DOCS.md
+  collaboration/
+    quote-ref/
+
+roles/
+  pm/
+    memory/
+    completed_design_files/
+  design/
+    memory/
+    completed_design_files/
+  android/
+    memory/
+    completed_design_files/
+  backend/
+    memory/
+    completed_design_files/
+  model/
+    memory/
+    completed_design_files/
 ```
 
-### 重大决策
-
-放：
+规则：
 
 ```text
+五模型长期上下文 → roles/{role}/memory/
+角色自己的正式文档 → roles/{role}/completed_design_files/
+跨角色协作记录 → docs/collaboration/{topic}/
+最新状态与拍板入口 → docs/05_LATEST_COLLAB_DOCS.md
+```
+
+已移除：
+
+```text
+.github/
 docs/adr/
+docs/handoffs/
+docs/shared/
+roles/{role}/_archive/
+根目录 README / CHANGELOG / Codex handoff / GitHub 上传说明
+空占位协作主题
 ```
+
+重大决策不再单独放 ADR 文件，必须沉淀到本追踪表和相关角色 memory。
 
 ---
 
-## 2. memory/ 的作用
-
-`memory/` 不是交付文档，而是每个模型自己的长期上下文缓存。
-
-每个角色建议包含：
-
-```text
-ROLE_MEMORY.md
-CURRENT_CONTEXT.md
-DECISIONS_CACHE.md
-OPEN_QUESTIONS.md
-WATCHLIST.md
-```
-
-开始任务前读取顺序：
+## 3. 必读顺序
 
 ```text
 1. docs/05_LATEST_COLLAB_DOCS.md
-2. roles/{role}/memory/ROLE_MEMORY.md
-3. roles/{role}/memory/CURRENT_CONTEXT.md
-4. docs/collaboration/{topic}/
+2. roles/pm/memory/ROLE_MEMORY.md
+3. roles/pm/memory/CURRENT_CONTEXT.md
+4. roles/pm/memory/DECISIONS_CACHE.md
+5. 与任务相关的 docs/collaboration/{topic}/
+6. 与任务相关的角色 memory/
 ```
 
 ---
 
-## 3. 当前最新文档总表
+## 4. 当前正式文档
 
-| 文档 ID | 文档名 | 建议路径 | 负责人 | 状态 | 版本 | 用途 |
+| 文档 ID | 文档名 | 实际路径 | 负责人 | 状态 | 版本 | 用途 |
 |---|---|---|---|---|---|---|
-| DOC-PM-001 | Lumen_设计与安卓前端交接文档_PM.md | `roles/pm/completed_design_files/` | PM | active | v0.1 | 给设计与安卓的总体交接 |
-| DOC-FE-001 | 前端安卓交付备注_基于UI设计报告.md | `roles/android/completed_design_files/` | PM / Android | active | v0.1 | 前端实现备注与禁区 |
-| DOC-BE-001 | Lumen_后端模型层实现规划_v0.1.md | `roles/backend/completed_design_files/` | PM / Backend / Model | active | v0.1 | 后端模型层升级规划 |
-| DOC-QUOTE-001 | 聊天消息引用前后端规划 | `docs/collaboration/quote-ref/` | PM / Android / Backend | active | v0.1 | quote_ref 前后端协作规划 |
-| DOC-PROMPT-001 | 陆小七完整人格提示文件夹_v0.3.1 | `roles/model/completed_design_files/xiaoqi_prompt_package_v0.3.1/` | Model | active | v0.3.1 | 小七人格与提示文件全集 |
-| DOC-VISUAL-001 | 视觉补丁：眼睛固定眼镜可变 | `roles/model/completed_design_files/visual_patch_v0.3.1/` | Model / Design | active | v0.3.1 | 小七视觉锚点修正 |
-| DOC-CRITIC-001 | Consistency Critic 设计说明 | `docs/collaboration/consistency-critic/` | Model | draft | v0.1 | 一致性批判模型长期设计 |
-| ADR-0001 | POST /chat 保持 message 字段 | `docs/adr/ADR-0001-use-message-field-for-chat-api.md` | PM / Backend / Android | active | v1 | API 字段拍板 |
-| ADR-0002 | quote_ref P0 只支持聊天消息引用 | `docs/adr/ADR-0002-quote-ref-p0-scope.md` | PM / Backend / Android | active | v1 | 引用功能范围拍板 |
+| DOC-BE-001 | Lumen_后端模型层实现规划_v0.1.md | `roles/pm/completed_design_files/Lumen_后端模型层实现规划_v0.1.md` | PM | active | v0.1 | 后端模型层升级规划 |
+| DOC-PROMPT-001 | 陆小七完整人格提示文件夹 | `roles/pm/completed_design_files/xiaoqi_complete_prompt_package_v0_3_1_full.zip` | PM / Model | active | v0.3.1 | 小七人格、视觉、生图和后端接入提示词包 |
 
 ---
 
-## 4. 最近 PM 拍板摘要
+## 5. 当前公共协作
 
-### quote_ref 功能
+| 主题 | 路径 | 状态 | 当前结论 |
+|---|---|---|---|
+| quote_ref 聊天消息引用 | `docs/collaboration/quote-ref/` | active | 后端字段确认和适配已完成；Android 已完成数据层与 ViewModel，等待 Phase 3 UI 与联调 |
+
+quote_ref 当前协作文件：
 
 ```text
-Q1：POST /chat 保持 message 字段，不改 content。
-Q2：sender_name 选 A，后端 snapshot 写 assistant=小七，user=你。
-Q3：并发保护 409 conversation_busy 一并做。
-Q4：quote_ref 作为当前 user message prefix 注入模型上下文。
-Q5：本期不做 event_log / memory extractor，只存 messages.quote_ref。
+docs/collaboration/quote-ref/01_安卓前端_Phase1_2_进度同步与字段确认.md
+docs/collaboration/quote-ref/02_后端_字段确认回复.md
+docs/collaboration/quote-ref/README.md
 ```
 
 ---
 
-## 5. 维护 checklist
+## 6. 当前 PM 拍板
+
+### quote_ref
+
+```text
+1. POST /chat 保持 message 字段，不改 content。
+2. quote_ref P0 只支持 type=message。
+3. quote_ref sender_name snapshot：assistant=小七，user=你。
+4. 同 user_id 并发 /chat 返回 409 conversation_busy。
+5. quote_ref 作为当前 user message prefix 注入模型上下文。
+6. P0 不做 event_log / memory extractor，只存 messages.quote_ref。
+```
+
+### quote_ref 后端确认
+
+```text
+POST /chat:
+{
+  "user_id": 123,
+  "message": "我就笑,怎么了",
+  "image_url": null,
+  "quote_ref": {
+    "type": "message",
+    "id": "456"
+  }
+}
+
+quote_ref.type = "message"
+quote_ref.id 请求可接受 int 或 string
+GET /messages quote_ref.id 响应为 number
+错误体为扁平 {code, message}
+400 invalid_quote_ref
+409 conversation_busy
+纯图 preview_text 后端兜底为 "[图片]"
+模型上下文注入已由后端完成
+```
+
+### 小七产品边界
+
+禁止未经 PM 拍板引入：
+
+```text
+好感度 / 亲密度数字
+任务中心
+多角色市场
+Prompt 编辑器
+底部 Tab 作为 MVP 主导航
+登录页作为 MVP 正式入口
+关系等级 UI
+工具式助手语气
+情感勒索或“你不回来我活不下去”式依赖
+```
+
+### 视觉身份
+
+固定身份锚点：
+
+```text
+头发
+帽子
+眼睛
+面貌气质
+体型
+```
+
+可变元素：
+
+```text
+眼镜
+穿着
+姿势
+表情强度
+光照
+场景
+```
+
+关键修正：
+
+```text
+眼睛是固定身份特征。
+眼镜是可变配饰。
+```
+
+---
+
+## 7. 维护规则
+
+做任何文档或协作改动后检查：
 
 ```text
 [ ] 是否更新本追踪表
 [ ] 是否更新相关角色 memory
-[ ] 是否放入正确目录
-[ ] 是否需要从 docs/collaboration/ 转入 completed_design_files/
-[ ] 是否需要复制到 docs/handoffs/
-[ ] 是否需要新增 ADR
-[ ] 是否影响 API.md
-[ ] 是否影响 Android handover
-[ ] 是否影响 Prompt 版本
-[ ] 是否需要 PM 拍板
+[ ] 是否放入 roles/{role}/completed_design_files/
+[ ] 是否放入 docs/collaboration/{topic}/
+[ ] 是否把重大 PM 拍板写回本追踪表
+[ ] 是否影响 Android / Backend / Model 的当前上下文
 ```
-
-
----
-
-## Codex 接手文件
-
-| 文件 | 路径 | 状态 | 用途 |
-|---|---|---|---|
-| AGENTS.md | `AGENTS.md` | active | Codex / Agent 仓库级行为规则 |
-| CODEX_HANDOFF_PROMPT.md | `CODEX_HANDOFF_PROMPT.md` | active | Codex 新对话接手提示词 |
-| GITHUB_WEB_UPLOAD_GUIDE.md | `GITHUB_WEB_UPLOAD_GUIDE.md` | active | GitHub 网页上传说明 |

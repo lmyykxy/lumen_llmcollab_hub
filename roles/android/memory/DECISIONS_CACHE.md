@@ -1,7 +1,7 @@
 # 决策缓存
 
 本文件记录和本角色相关的 PM 拍板摘要。  
-正式依据仍以 `docs/adr/` 和 `docs/05_LATEST_COLLAB_DOCS.md` 为准。
+正式依据以 `docs/05_LATEST_COLLAB_DOCS.md` 为准。
 
 ---
 
