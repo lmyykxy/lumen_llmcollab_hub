@@ -68,3 +68,20 @@
 后端侧后续只维护 roles/backend/memory/ 与 roles/backend/completed_design_files/。
 docs/adr、docs/handoffs、docs/shared 已移除；重大决策沉淀到最新追踪表与相关角色 memory。
 ```
+
+## 2026-04-27 模型层人格切换规划
+
+```text
+新增协作文档：docs/collaboration/model-layer/01_PM_陆小七人格替换与模型层实现规划.md。
+
+当前运行时提示词源：C:\Users\jyb17\Desktop\PM统筹\prompts。
+已确认 role/identity.md 仍写“暮(mù,临时名)”，role/*.md 整体仍是临时占位。
+
+后端下一步不应继续把“暮”作为正式 assistant 身份。正式链路统一：
+- character_id=xiaoqi
+- display_name=陆小七
+- assistant sender_name=小七
+- prompt_version=xiaoqi_prompt_package_v0.3.1
+
+实施顺序：先替换运行时 prompts/role/*.md 并清理“暮 / OpenClaw / 控制标记”在用户可见链路的残留，再接 PromptRegistry、ContextBuilder、model_run_logs / event_log 最小骨架、TurnAnalyzer 和 ImageIntentBuilder。不得破坏现有 /chat SSE、message 字段、quote_ref P0、主动消息和 Android 兼容字段。
+```

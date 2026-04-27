@@ -35,3 +35,20 @@
 当前提示词包来源仍是 roles/pm/completed_design_files/xiaoqi_complete_prompt_package_v0_3_1_full.zip。
 模型规则继续以 v0.3.1 为准：小七不是工具，眼睛固定，眼镜可变，legacy_reference 不直接加载。
 ```
+
+## 2026-04-27 模型层实施规划
+
+```text
+新增协作文档：docs/collaboration/model-layer/01_PM_陆小七人格替换与模型层实现规划.md。
+
+当前运行时提示词源：C:\Users\jyb17\Desktop\PM统筹\prompts。
+已确认 role/identity.md 仍写“暮(mù,临时名)”，role/soul.md、role/voice.md、role/world.md、role/relationships.md 为临时占位。
+
+模型侧下一步重点：
+1. 将“暮”明确视为历史测试占位，正式链路统一切到陆小七。
+2. 先替换当前 prompts/role/*.md 为小七最小运行版。
+3. 再接入 xiaoqi_prompt_package_v0.3.1。
+4. 设计 PromptRegistry 的 core_card / voice_card / safety_card / relationship_card / visual_card / image_rules_card。
+5. 设计 ContextBuilder 输入：quote_ref、image_description、recent_messages、recent_events、memories、CharacterState、RelationshipState。
+6. 建立 forbidden output 测试：暮、OpenClaw、[SENDIMG]、[MEMORY]、[DAILY_PLAN]、NO_REPLY、主人等不得出现在用户可见输出。
+```

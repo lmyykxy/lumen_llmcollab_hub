@@ -27,3 +27,14 @@ Q5：本期不做 event_log / memory extractor，只存 messages.quote_ref。
 不再保留 docs/adr、docs/handoffs、docs/shared、roles/_archive 和根目录交接脚手架。
 重大拍板写入最新追踪表和相关角色 memory。
 ```
+
+## 2026-04-27 模型层人格切换
+
+```text
+Q1：“暮”只作为历史测试占位，不进入正式用户链路。
+Q2：当前运行时提示词源为 C:\Users\jyb17\Desktop\PM统筹\prompts，第一批替换对象是 prompts/role/*.md。
+Q3：正式默认角色统一为 character_id=xiaoqi、display_name=陆小七、assistant sender_name=小七。
+Q4：模型层接入 xiaoqi_prompt_package_v0.3.1，通过 PromptRegistry 加载，不直接加载 legacy reference 到普通聊天主 prompt。
+Q5：人格切换不得破坏现有 /chat SSE、message 字段、quote_ref P0 和 Android 兼容字段。
+Q6：关系数值、防御值、hidden_mood、prompt、verifier_report 等内部字段不得返回 UI。
+```
