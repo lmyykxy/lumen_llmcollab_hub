@@ -93,7 +93,6 @@ roles/{role}/_archive/
 | DOC-BE-001 | Lumen_后端模型层实现规划_v0.1.md | `roles/pm/completed_design_files/Lumen_后端模型层实现规划_v0.1.md` | PM | active | v0.1 | 后端模型层升级规划 |
 | DOC-PM-002 | AI伴侣项目交接文档（产品宪法） | `roles/pm/completed_design_files/AI伴侣项目交接文档.md` | PM | active | v0.1 | 产品哲学 / 10 阶段路线 / 视觉一致性六件套 / 长期愿景 |
 | DOC-PROMPT-001 | 陆小七完整人格提示文件夹 | `roles/pm/completed_design_files/xiaoqi_complete_prompt_package_v0_3_1_full.zip` | PM / Model | active | v0.3.1 | 小七人格、视觉、生图和后端接入提示词包 |
-| DOC-API-001 | API 接口契约 | `roles/backend/completed_design_files/API.md` | Backend | active | v 同步 2026-04-27 | 后端 HTTP/SSE 接口契约（**权威源在主项目 ~/companion/docs/**） |
 | DOC-AND-001 | Android Handover | `roles/backend/completed_design_files/ANDROID_HANDOVER.md` | Backend | active | v 同步 2026-04-27 | 给安卓客户端的契约 + 实现要点（**权威源在主项目**） |
 | DOC-BE-RPT-001 | 后端工作汇报 2026-04-26 | `roles/backend/completed_design_files/工作汇报_2026-04-26_后端.md` | Backend | active | v0.1 | 后端 hotfix 序列 + 接口契约摘要 |
 | DOC-DESIGN-001 | UI Brief A · Android Mockup | `roles/design/completed_design_files/ui_brief_A_android_mockup.md` | Design | active | v0.1 | Android 端 UI 设计参考 |
@@ -105,7 +104,8 @@ roles/{role}/_archive/
 
 | 主题 | 路径 | 状态 | 当前结论 |
 |---|---|---|---|
-| quote_ref 聊天消息引用 | `docs/collaboration/quote-ref/` | active | PM 拍板 → 后端实现 → 字段冲突双方修齐 → Android Phase 3 UI 完成,**等待联调** |
+| API 接口契约 | `docs/collaboration/api/` | active | **跨角色单一权威**;后端 LLM 主维护,代码侧契约改动后同步本目录;详见 `docs/collaboration/api/README.md` |
+| quote_ref 聊天消息引用 | `docs/collaboration/quote-ref/` | active | PM 拍板 → 后端实现 → 字段冲突双方修齐 → Android Phase 3 UI 完成,后端已发布联调启动文档,**等安卓发请求** |
 
 quote_ref 当前协作文件(按时间序):
 
