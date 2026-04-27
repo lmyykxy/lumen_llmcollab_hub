@@ -95,6 +95,7 @@ roles/{role}/_archive/
 | DOC-PROMPT-001 | 陆小七完整人格提示文件夹 | `roles/pm/completed_design_files/xiaoqi_complete_prompt_package_v0_3_1_full.zip` | PM / Model | active | v0.3.1 | 小七人格、视觉、生图和后端接入提示词包 |
 | DOC-AND-001 | Android Handover | `roles/backend/completed_design_files/ANDROID_HANDOVER.md` | Backend | active | v 同步 2026-04-27 | 给安卓客户端的契约 + 实现要点（**权威源在主项目**） |
 | DOC-BE-RPT-001 | 后端工作汇报 2026-04-26 | `roles/backend/completed_design_files/工作汇报_2026-04-26_后端.md` | Backend | active | v0.1 | 后端 hotfix 序列 + 接口契约摘要 |
+| DOC-BE-RPT-002 | 后端工作汇报 2026-04-27 | `roles/backend/completed_design_files/工作汇报_2026-04-27_后端.md` | Backend | active | v0.1 | 联调期 7 轮 hotfix + 观测性 + orphan cleanup + 主动消息文档化;**含 PM 阻塞项 Q1**(OpenAI 组织验证) |
 | DOC-DESIGN-001 | UI Brief A · Android Mockup | `roles/design/completed_design_files/ui_brief_A_android_mockup.md` | Design | active | v0.1 | Android 端 UI 设计参考 |
 | DOC-DESIGN-002 | UI Brief C · Moodboard | `roles/design/completed_design_files/ui_brief_C_moodboard.md` | Design | active | v0.1 | 整体视觉气质 / 色板 / 美术参考 |
 
