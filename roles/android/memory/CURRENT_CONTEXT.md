@@ -35,3 +35,19 @@ Android 侧后续只维护 roles/android/memory/ 与 roles/android/completed_des
 quote_ref：Android 已完成 Phase 1 数据层和 Phase 2 ViewModel；后端已确认字段并完成适配。
 下一步是 Android Phase 3 UI：长按引用、Composer 引用预览、气泡 QuoteBlock、点击滚动定位、端到端联调。
 ```
+
+## 2026-04-27 quote_ref Phase 3 完成
+
+```text
+Android 工程 commit 06b8c83:Phase 1+2+3 全部落地。
+- Phase 1 数据层:MessageEntity.quote_ref_json + Room v2 + DTO + Mappers + ChatRepository.sendMessage(quoteRef)
+- Phase 2 ViewModel:pendingQuote state + onQuoteMessage / onCancelQuote / send 带 quote
+- Phase 3 UI:MessageBubble 长按 ModalBottomSheet(引用/复制/保存图)+ QuoteBlock 渲染(气泡顶部,半透明黑底+左 accent 竖线)+ Composer QuotePreviewBar + Timeline animateScrollToItem 滚动定位
+
+额外修复:FlexibleStringSerializer 让 QuoteRefDto.id 同时接 JSON number/string
+(后端响应 id 是 number,前端 domain String,kotlinx.serialization 默认会崩)。
+
+工程实现细节见同目录 IMPLEMENTATION_NOTES.md。
+
+下一步:等后端确认开始联调,跑 8 个端到端用例(03 文档 §4)。
+```
