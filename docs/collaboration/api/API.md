@@ -262,6 +262,7 @@ data: {}
         "sender_name": "小七",
         "preview_text": "你不许笑。",
         "thumbnail_url": null,
+        "image_description": null,
         "created_at": "2026-04-26T20:00:00+00:00",
         "source_event_id": null
       },
@@ -283,6 +284,7 @@ data: {}
 | `sender_name` | string | 显示名快照(`"小七"` if role=assistant else `"你"`,**写入时冷冻**) |
 | `preview_text` | string | 被引用消息内容预览,截断到 80 字。content 为空且有 image 时为 `"[图片]"` |
 | `thumbnail_url` | string \| null | 被引用消息的 image_url(P0 直接用原图,无服务端缩略) |
+| `image_description` | string \| null | (2026-04-27 加)被引用图的视觉描述,30-120 字。**只在被引用消息有图 + 后端跑过 vision 描述时**非空。前端可不读(后端会注入到 LLM prefix);如果要 UI 上展示,自行决定 |
 | `created_at` | iso8601 | 被引用对象的创建时间 |
 | `source_event_id` | null | P1 event_log 预留,P0 永远 null |
 
