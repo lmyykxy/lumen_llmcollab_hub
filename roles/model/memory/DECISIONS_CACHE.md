@@ -25,3 +25,13 @@ Q4：当前正式 prompt 版本为 xiaoqi_prompt_package_v0.3.1。
 Q5：普通聊天主 prompt 只加载分层 prompt cards，不直接加载 legacy reference 或完整大包。
 Q6：眼睛是固定身份特征，眼镜是可变配饰；ImageIntentBuilder 必须遵守该规则。
 ```
+
+## 2026-04-27 PM 回复模型 Audit
+
+```text
+Q1：实现权威为服务器运行时 ~/companion/backend/prompts/，PM 本机 prompts 不阻塞。
+Q2：P1 只替换 prompts/role/*.md 五份文件；P2 再整理 xiaoqi v0.3.1 包并实现 PromptRegistry。
+Q3：CharacterState 使用 DB schema。
+Q4：TurnAnalyzer MVP 使用同进程 async 后台任务，不阻塞 /chat SSE。
+Q5：forbidden output 测试范围限定 runtime prompt、后端用户可见模板、runtime cards；不扫 docs/collaboration、roles/*/completed_design_files、legacy_reference。
+```

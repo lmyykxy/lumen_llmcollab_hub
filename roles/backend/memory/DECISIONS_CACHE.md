@@ -25,3 +25,13 @@ Q4：PromptRegistry 接入 xiaoqi_prompt_package_v0.3.1，记录 prompt_version 
 Q5：人格切换不得改坏现有 /chat SSE、message 字段、quote_ref P0 和 Android 兼容响应。
 Q6：hidden_mood、关系数值、防御值、prompt、verifier_report 等内部字段不得返回 UI。
 ```
+
+## 2026-04-27 PM 回复模型 Audit
+
+```text
+Q1：以服务器运行时 ~/companion/backend/prompts/ 为实现权威。
+Q2：P1 先替换 prompts/role/*.md，P2 再上 PromptRegistry。
+Q3：CharacterState 正式来源走 DB schema。
+Q4：TurnAnalyzer MVP 先同进程 async，失败不影响 /chat SSE。
+Q5：forbidden output 测试只扫运行时 prompt、后端用户可见模板、runtime cards，不扫历史文档。
+```

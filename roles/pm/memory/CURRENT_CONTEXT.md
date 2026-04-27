@@ -62,3 +62,19 @@ PM 已新增 docs/collaboration/frontend-copy/01_PM_关于页文案调整_陆小
 
 目标：替换 Android「关于陆小七」「关于 Lumen」两页静态文案，去掉“暮 / 书店店员 / 城南老书店”和“温柔 AI 陪伴 / 能回答问题的助手”等旧口径，统一为陆小七正式产品定位。
 ```
+
+## 2026-04-27 模型 Audit 回复
+
+```text
+模型 LLM 已提交 docs/collaboration/model-layer/02_模型_对PM规划的回应Audit与执行计划.md。
+PM 已回复 docs/collaboration/model-layer/03_PM_对模型Audit回应与P1开工拍板.md。
+
+拍板：
+1. 以服务器运行时 ~/companion/backend/prompts/ 为本次实现权威，PM 本机 prompts 只是镜像/参考，不阻塞。
+2. 采用渐进路线：P1 先替换 prompts/role/*.md 五份文件，P2 再上 PromptRegistry。
+3. CharacterState 后续走 DB，不走进程内 dict。
+4. TurnAnalyzer 先用同进程 async 后台任务，不阻塞 /chat SSE。
+5. forbidden output 测试不能扫历史协作文档，只扫运行时 prompt、后端用户可见模板和 runtime cards。
+
+PM 已授权模型/后端立即开始 P1。
+```

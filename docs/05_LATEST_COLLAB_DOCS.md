@@ -130,6 +130,8 @@ model-layer 当前协作文件(按时间序):
 
 ```text
 docs/collaboration/model-layer/01_PM_陆小七人格替换与模型层实现规划.md  # PM 给模型/后端 LLM 的人格切换与模型层实施规划
+docs/collaboration/model-layer/02_模型_对PM规划的回应Audit与执行计划.md  # 模型 Audit 结果 + 4 个 PM 待拍板问题
+docs/collaboration/model-layer/03_PM_对模型Audit回应与P1开工拍板.md     # PM 回答 Q1-Q4 + 授权开始 P1
 ```
 
 frontend-copy 当前协作文件(按时间序):
@@ -233,6 +235,8 @@ Prompt 编辑器
 5. `/chat` 继续保持现有 SSE 与 message 字段，不因人格切换做 breaking change。
 6. quote_ref P0 继续只支持 type=message，并作为当前 user message prefix 注入模型上下文。
 7. 关系数值、防御值、hidden_mood、prompt、verifier_report 不返回 UI。
+8. PM 已拍板模型 Audit Q1-Q4：以服务器运行时 prompts 为实现权威；P1 先替换 5 份 role md；P4 CharacterState 走 DB；P5 TurnAnalyzer 先同进程 async。
+9. forbidden output 测试不得扫描历史协作文档，只扫运行时 prompt、后端用户可见模板和 runtime cards。
 ```
 
 ### 前端关于页文案

@@ -52,3 +52,19 @@
 5. 设计 ContextBuilder 输入：quote_ref、image_description、recent_messages、recent_events、memories、CharacterState、RelationshipState。
 6. 建立 forbidden output 测试：暮、OpenClaw、[SENDIMG]、[MEMORY]、[DAILY_PLAN]、NO_REPLY、主人等不得出现在用户可见输出。
 ```
+
+## 2026-04-27 PM 回复模型 Audit
+
+```text
+模型已提交 docs/collaboration/model-layer/02_模型_对PM规划的回应Audit与执行计划.md。
+PM 已回复 docs/collaboration/model-layer/03_PM_对模型Audit回应与P1开工拍板.md。
+
+PM 拍板：
+1. 以服务器运行时 ~/companion/backend/prompts/ 为本次实现权威。
+2. P1 先替换 prompts/role/*.md 五份文件，P2 再上 PromptRegistry。
+3. CharacterState 后续走 DB。
+4. TurnAnalyzer 先用同进程 async。
+5. forbidden output 测试只扫运行时 prompt / 后端用户可见模板 / runtime cards，不扫历史协作文档。
+
+下一步：模型/后端立即开始 P1，并回传 5 份 role md diff、测试结果和 smoke test 摘要。
+```
