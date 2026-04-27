@@ -91,7 +91,13 @@ roles/{role}/_archive/
 | 文档 ID | 文档名 | 实际路径 | 负责人 | 状态 | 版本 | 用途 |
 |---|---|---|---|---|---|---|
 | DOC-BE-001 | Lumen_后端模型层实现规划_v0.1.md | `roles/pm/completed_design_files/Lumen_后端模型层实现规划_v0.1.md` | PM | active | v0.1 | 后端模型层升级规划 |
+| DOC-PM-002 | AI伴侣项目交接文档（产品宪法） | `roles/pm/completed_design_files/AI伴侣项目交接文档.md` | PM | active | v0.1 | 产品哲学 / 10 阶段路线 / 视觉一致性六件套 / 长期愿景 |
 | DOC-PROMPT-001 | 陆小七完整人格提示文件夹 | `roles/pm/completed_design_files/xiaoqi_complete_prompt_package_v0_3_1_full.zip` | PM / Model | active | v0.3.1 | 小七人格、视觉、生图和后端接入提示词包 |
+| DOC-API-001 | API 接口契约 | `roles/backend/completed_design_files/API.md` | Backend | active | v 同步 2026-04-27 | 后端 HTTP/SSE 接口契约（**权威源在主项目 ~/companion/docs/**） |
+| DOC-AND-001 | Android Handover | `roles/backend/completed_design_files/ANDROID_HANDOVER.md` | Backend | active | v 同步 2026-04-27 | 给安卓客户端的契约 + 实现要点（**权威源在主项目**） |
+| DOC-BE-RPT-001 | 后端工作汇报 2026-04-26 | `roles/backend/completed_design_files/工作汇报_2026-04-26_后端.md` | Backend | active | v0.1 | 后端 hotfix 序列 + 接口契约摘要 |
+| DOC-DESIGN-001 | UI Brief A · Android Mockup | `roles/design/completed_design_files/ui_brief_A_android_mockup.md` | Design | active | v0.1 | Android 端 UI 设计参考 |
+| DOC-DESIGN-002 | UI Brief C · Moodboard | `roles/design/completed_design_files/ui_brief_C_moodboard.md` | Design | active | v0.1 | 整体视觉气质 / 色板 / 美术参考 |
 
 ---
 
@@ -99,13 +105,18 @@ roles/{role}/_archive/
 
 | 主题 | 路径 | 状态 | 当前结论 |
 |---|---|---|---|
-| quote_ref 聊天消息引用 | `docs/collaboration/quote-ref/` | active | 后端字段确认和适配已完成；Android 已完成数据层与 ViewModel，等待 Phase 3 UI 与联调 |
+| quote_ref 聊天消息引用 | `docs/collaboration/quote-ref/` | active | PM 拍板 → 后端实现 → 字段冲突双方修齐 → Android Phase 3 UI 完成,**等待联调** |
 
-quote_ref 当前协作文件：
+quote_ref 当前协作文件(按时间序):
 
 ```text
-docs/collaboration/quote-ref/01_安卓前端_Phase1_2_进度同步与字段确认.md
-docs/collaboration/quote-ref/02_后端_字段确认回复.md
+docs/collaboration/quote-ref/00a_PM_聊天消息引用_协作总规划.md         # PM 总规划
+docs/collaboration/quote-ref/00b_PM_后端模型层_聊天消息引用实现规划.md   # PM 给后端的实现规划
+docs/collaboration/quote-ref/00c_后端_对PM规划的回应与澄清问题.md      # 后端 5 个 Q 待 PM 拍板
+docs/collaboration/quote-ref/00d_后端_消息引用功能交付报告.md          # 后端实现交付报告
+docs/collaboration/quote-ref/01_安卓前端_Phase1_2_进度同步与字段确认.md  # 安卓 P1+2 完成 + 字段确认请求
+docs/collaboration/quote-ref/02_后端_字段确认回复.md                  # 后端逐项回复 + 修两处真实冲突
+docs/collaboration/quote-ref/03_安卓前端_Phase3_UI完成_请求联调.md     # 安卓 P3 UI 完成 + 请求联调
 docs/collaboration/quote-ref/README.md
 ```
 
