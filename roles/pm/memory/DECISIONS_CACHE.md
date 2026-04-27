@@ -38,3 +38,12 @@ Q4：模型层接入 xiaoqi_prompt_package_v0.3.1，通过 PromptRegistry 加载
 Q5：人格切换不得破坏现有 /chat SSE、message 字段、quote_ref P0 和 Android 兼容字段。
 Q6：关系数值、防御值、hidden_mood、prompt、verifier_report 等内部字段不得返回 UI。
 ```
+
+## 2026-04-27 前端关于页文案
+
+```text
+Q1：「关于陆小七」使用正式陆小七口径，不再使用“暮 / 书店店员 / 城南老书店”。
+Q2：「关于 Lumen」定义为单一角色生活流 AI 伴侣系统，不写成“能回答问题的助手”。
+Q3：关于页避免“她是 AI · 一个温柔的陪伴”等泛化工具化表达。
+Q4：文案核心应表达小七有自己的生活，用户是在慢慢靠近她，不是拥有她。
+```

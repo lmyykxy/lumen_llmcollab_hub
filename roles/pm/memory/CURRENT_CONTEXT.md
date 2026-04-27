@@ -54,3 +54,11 @@ PM 已新增 docs/collaboration/model-layer/01_PM_陆小七人格替换与模型
 
 模型/后端下一步应先替换 prompts/role/*.md 为陆小七最小运行版，再接入 xiaoqi_prompt_package_v0.3.1、PromptRegistry、ContextBuilder、最小 CharacterState / EventLog / Memory / TurnAnalyzer / ImageIntentBuilder。
 ```
+
+## 2026-04-27 前端关于页文案协作
+
+```text
+PM 已新增 docs/collaboration/frontend-copy/01_PM_关于页文案调整_陆小七与Lumen.md。
+
+目标：替换 Android「关于陆小七」「关于 Lumen」两页静态文案，去掉“暮 / 书店店员 / 城南老书店”和“温柔 AI 陪伴 / 能回答问题的助手”等旧口径，统一为陆小七正式产品定位。
+```

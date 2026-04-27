@@ -30,6 +30,7 @@ docs/
   collaboration/
     quote-ref/
     model-layer/
+    frontend-copy/
 
 roles/
   pm/
@@ -110,6 +111,7 @@ roles/{role}/_archive/
 | quote_ref 聊天消息引用 | `docs/collaboration/quote-ref/` | active | PM 拍板 → 后端实现 → 联调期 7 轮改进 → 后端 OK,**等前端重跑用例 3/4** |
 | 主动消息(proactive messages)| `docs/collaboration/proactive-messages/` | active | 后端 Phase 2b-1 起已跑通,**前端待接入** `/users/{id}/subscribe` SSE |
 | 模型层 / 小七人格切换 | `docs/collaboration/model-layer/` | active | PM 已规划从运行时测试人格“暮”切到陆小七；当前提示词源为 `C:\Users\jyb17\Desktop\PM统筹\prompts`，下一步接入 PromptRegistry / ContextBuilder / xiaoqi v0.3.1 |
+| 前端静态文案 | `docs/collaboration/frontend-copy/` | active | PM 已给出「关于陆小七」「关于 Lumen」两页替换文案；前端需去除“暮”和工具化 AI 陪伴口径 |
 
 quote_ref 当前协作文件(按时间序):
 
@@ -128,6 +130,12 @@ model-layer 当前协作文件(按时间序):
 
 ```text
 docs/collaboration/model-layer/01_PM_陆小七人格替换与模型层实现规划.md  # PM 给模型/后端 LLM 的人格切换与模型层实施规划
+```
+
+frontend-copy 当前协作文件(按时间序):
+
+```text
+docs/collaboration/frontend-copy/01_PM_关于页文案调整_陆小七与Lumen.md  # PM 给前端的关于页文案替换协作
 ```
 
 ---
@@ -225,6 +233,15 @@ Prompt 编辑器
 5. `/chat` 继续保持现有 SSE 与 message 字段，不因人格切换做 breaking change。
 6. quote_ref P0 继续只支持 type=message，并作为当前 user message prefix 注入模型上下文。
 7. 关系数值、防御值、hidden_mood、prompt、verifier_report 不返回 UI。
+```
+
+### 前端关于页文案
+
+```text
+1. 「关于陆小七」不得再使用“暮 / 书店店员 / 城南老书店”等测试人格描述。
+2. 「关于 Lumen」不得定义为“能回答问题的助手”。
+3. 关于页需表达：陆小七有自己的生活、房间、日记、照片、情绪和私密空间；用户是在慢慢靠近她，不是拥有她。
+4. 避免“她是 AI · 一个温柔的陪伴”这类泛化工具化口径。
 ```
 
 ---
