@@ -101,6 +101,7 @@ roles/{role}/_archive/
 | DOC-MODEL-RPT-P1 | 模型层 P1 人格替换交付报告 | `docs/collaboration/model-layer/04_模型_P1人格替换交付报告.md` | Model | done | v0.1 | 5 份 role md 替换 + forbidden tests + 4 smoke 全过 |
 | DOC-MODEL-RPT-P2 | 模型层 P2 PromptRegistry 交付报告 | `docs/collaboration/model-layer/05_模型_P2交付报告.md` | Model | done | v0.1 | PromptRegistry 三层 cards + xiaoqi v0.3.1 入仓 + chat/scheduler 接入 + 10 单测 + 4 smoke 复测 |
 | DOC-MODEL-RPT-P3 | 模型层 P3 ContextBuilder 交付报告 | `docs/collaboration/model-layer/07_模型_P3交付报告.md` | Model | done | v0.1 | ContextBuilder + budget log + output_filters + unknown char fallback + runtime cards forbidden + 115 单测 + 5 smoke 全过 |
+| DOC-MODEL-RPT-P4 | 模型层 P4 CharacterState/RelationshipState DB 交付报告 | `docs/collaboration/model-layer/08_模型_P4交付报告.md` | Model | done | v0.1 | character_states / relationship_states 表 + GET /users/{id}/character_state 脱敏端点 + ContextBuilder 接入 + state prompt 注入(自然语言不是数值)+ 138 单测全过 |
 | DOC-DESIGN-001 | UI Brief A · Android Mockup | `roles/design/completed_design_files/ui_brief_A_android_mockup.md` | Design | active | v0.1 | Android 端 UI 设计参考 |
 | DOC-DESIGN-002 | UI Brief C · Moodboard | `roles/design/completed_design_files/ui_brief_C_moodboard.md` | Design | active | v0.1 | 整体视觉气质 / 色板 / 美术参考 |
 
@@ -113,7 +114,7 @@ roles/{role}/_archive/
 | API 接口契约 | `docs/collaboration/api/` | active | **跨角色单一权威**;后端 LLM 主维护,代码侧契约改动后同步本目录;详见 `docs/collaboration/api/README.md` |
 | quote_ref 聊天消息引用 | `docs/collaboration/quote-ref/` | active | PM 拍板 → 后端实现 → 联调期 7 轮改进 → 后端 OK,**等前端重跑用例 3/4** |
 | 主动消息(proactive messages)| `docs/collaboration/proactive-messages/` | active | 后端 Phase 2b-1 起已跑通,**前端待接入** `/users/{id}/subscribe` SSE |
-| 模型层 / 小七人格切换 | `docs/collaboration/model-layer/` | active | P1(5 份 role md 替换)/ P2(PromptRegistry + xiaoqi v0.3.1 + chat/scheduler 接入)/ P3(ContextBuilder + budget log + output_filters + unknown char fallback + runtime cards forbidden)已完成,5 smoke 全过、115 单测全过;等 PM 拍板 P4 CharacterState DB |
+| 模型层 / 小七人格切换 | `docs/collaboration/model-layer/` | active | P1 / P2 / P3 / P4(CharacterState + RelationshipState DB + GET /users/{id}/character_state 脱敏端点 + state prompt 注入)已完成;138 单测全过;等 PM 拍板 P5 TurnAnalyzer |
 | 前端静态文案 | `docs/collaboration/frontend-copy/` | active | PM 已给出「关于陆小七」「关于 Lumen」两页替换文案；前端需去除“暮”和工具化 AI 陪伴口径 |
 
 quote_ref 当前协作文件(按时间序):
@@ -139,6 +140,7 @@ docs/collaboration/model-layer/04_模型_P1人格替换交付报告.md          
 docs/collaboration/model-layer/05_模型_P2交付报告.md                   # P2 交付:PromptRegistry + xiaoqi v0.3.1 入仓 + chat/scheduler 接入
 docs/collaboration/model-layer/06_PM_用户验收确认与P3开工建议.md        # 用户确认 P1/P2 验收 + 授权 P3 ContextBuilder
 docs/collaboration/model-layer/07_模型_P3交付报告.md                   # P3 交付:ContextBuilder + budget log + output_filters + unknown char fallback + runtime cards forbidden + 115 单测 + 5 smoke
+docs/collaboration/model-layer/08_模型_P4交付报告.md                   # P4 交付:character_states / relationship_states DB + GET /character_state 脱敏端点 + state prompt 注入 + 138 单测
 ```
 
 frontend-copy 当前协作文件(按时间序):
