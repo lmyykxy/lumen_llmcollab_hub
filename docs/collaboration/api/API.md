@@ -9,8 +9,8 @@
 
 ---
 
-**版本**:对齐 `backend v0.2.0` / `v0.4-phase2c` + image-caption hotfix(2026-04-25)+ tool_call 时序前置(2026-04-25)+ message quoting(2026-04-27)
-**最后更新**:2026-04-27
+**版本**:对齐 `backend v0.2.0` / `v0.4-phase2c` + image-caption hotfix(2026-04-25)+ tool_call 时序前置(2026-04-25)+ message quoting(2026-04-27)+ character_state 端点(P4 2026-04-28)+ P4.1 移除 relationship_stage 字段(2026-04-28)
+**最后更新**:2026-04-28
 **Base URL**:`http://45.76.189.48:8000`(公网开发机)/ `http://127.0.0.1:8000`(本机)
 **鉴权**:**无**(Phase 1/2c 全期);任何人都可调任何端点。**不要对公网完全开放**,用 ufw 按源 IP 放行。
 
@@ -26,9 +26,10 @@
 - [4. Chat — 用户发起对话(SSE)](#4-chat--用户发起对话sse)
 - [5. Timeline — 历史消息拉取](#5-timeline--历史消息拉取)
 - [6. Subscribe — 主动推送(长连 SSE)](#6-subscribe--主动推送长连-sse)
-- [7. Images — 上传 + 静态](#7-images--上传--静态)
-- [8. 客户端状态机建议](#8-客户端状态机建议)
-- [9. 错误码约定](#9-错误码约定)
+- [7. Character State — 小七此刻状态(脱敏只读)](#7-character-state--小七此刻状态脱敏只读)
+- [8. Images — 上传 + 静态](#8-images--上传--静态)
+- [9. 客户端状态机建议](#9-客户端状态机建议)
+- [10. 错误码约定](#10-错误码约定)
 
 ---
 
@@ -338,7 +339,65 @@ Subscribe 是 best-effort 推送——**丢事件是正常的**(client 慢 → q
 
 ---
 
-## 7. Images — 上传 + 静态
+## 7. Character State — 小七此刻状态(脱敏只读)
+
+### `GET /users/{user_id}/character_state`
+
+**用途**:读小七对该 user 当前的可暴露状态。给前端做"她在做什么 / 现在心情怎么样"这类轻量 UI 提示用(比如顶栏副标题)。**不是关系等级 / 好感度 UI**,前端拿不到关系数值。
+
+**响应**:`application/json`,**严格 4 字段**:
+
+```json
+{
+  "user_id": 20,
+  "mood": "平静",
+  "current_activity": "在房间里待着",
+  "last_updated_at": "2026-04-28T05:58:00.020323Z"
+}
+```
+
+| 字段 | 类型 | 说明 |
+|---|---|---|
+| `user_id` | int | 路径参数回显 |
+| `mood` | string | 公开心情(已脱敏)。中文短词,如"平静" / "懒懒的" / "有点累"。**不是 hidden_mood**(那是模型内部用的) |
+| `current_activity` | string | 小七当前在做什么。动词性短语,如"画画" / "在房间里待着" / "看番"。可选格式 |
+| `last_updated_at` | ISO-8601 UTC | 最近一次状态变化时间 |
+
+**新 user 行为**:第一次调会触发懒创建,返回默认状态(`mood="平静" / current_activity="在房间里待着" / stranger 关系起点`)。
+
+**永远不返回的字段**(产品边界 / PM `10_*.md` `12_*.md` 拍板,任何 PR 添加这类字段会被 schema 测试立即拒绝):
+
+```text
+relationship_stage    关系阶段名   ← P4.1 拍板移除
+stage                 同上(原始字段名)
+trust                 信任度(0-100)
+intimacy              亲密度(0-100)
+defense_level         防御度(0-100)
+affection_score       任何"好感度"派生值
+hidden_mood           模型内部心情(可能比 mood 更暗)
+energy               精力等级(low/mid/high)
+prompt_summary        模型对话摘要
+verifier_report       内部 verifier 输出
+```
+
+**为什么这个边界很硬**:小七**不是恋爱模拟器**。前端拿到关系数值就会忍不住做"好感度进度条" UI,直接破坏产品定位。用户应该从**小七的态度、语气、主动程度、分享边界**感知关系推进,不是看数字。详见 PM `10_PM_内部好感度边界与P3P4P5反馈.md`。
+
+**响应示例 cURL**:
+
+```bash
+curl http://45.76.189.48:8000/users/20/character_state
+```
+
+返回:
+```json
+{"user_id":20,"mood":"平静","current_activity":"在房间里待着","last_updated_at":"2026-04-28T05:58:00.020323Z"}
+```
+
+**404**:`user_id` 不存在 → `{"detail": "user_id=N not found"}`
+
+---
+
+## 8. Images — 上传 + 静态
 
 ### `POST /images/upload` — 用户上传图
 
@@ -371,7 +430,7 @@ Subscribe 是 best-effort 推送——**丢事件是正常的**(client 慢 → q
 
 ---
 
-## 8. 客户端状态机建议
+## 9. 客户端状态机建议
 
 这是 Android 端建议实现的冷启动流(仅供参考,不是硬约定):
 
@@ -411,7 +470,7 @@ Subscribe 是 best-effort 推送——**丢事件是正常的**(client 慢 → q
 
 ---
 
-## 9. 错误码约定
+## 10. 错误码约定
 
 | HTTP | 场景 | 响应体 |
 |---|---|---|
@@ -460,3 +519,4 @@ curl -N $BASE/users/$USER_ID/subscribe
 ## 变更日志
 
 - `2026-04-24` 初版,对齐 `v0.4-phase2c`。
+- `2026-04-28` 新增 §7 `GET /users/{id}/character_state`(P4 落地 + P4.1 移除 `relationship_stage` 字段 / P4.2 文档同步)。前端响应严格 4 字段,**关系数值 / 阶段 / 防御度永远不返**。
