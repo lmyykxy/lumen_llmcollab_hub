@@ -115,3 +115,14 @@ Q6：小七本人相关画像必须参考服务器固定图片 `/root/companion/
 Q7：如果当前 generate_image 工具不支持 reference image / image-to-image,模型/后端必须在 P6 交付中明确说明限制并降级,不得随机生成小七外观。
 Q8：P6 交付必须包含普通聊天不误触发生图、明确生图、生图意图状态化、固定参考图、视觉锚点、forbidden output、SSE/API 兼容性测试。
 ```
+
+## 2026-04-28 P6.1 表情与关系触发修正
+
+```text
+Q1：P6 已交付但暂不最终验收。
+Q2：小七本人画像必须把语义表情写入 final_prompt,不能只停留在 variable_elements hint。
+Q3：关系疏远/防御高时,对小七本人、自拍、私密房间等请求应有概率不触发生图；不是硬禁,由模型/策略结合内部关系状态判断。
+Q4：不画时应以小七口吻自然拒绝、嘴硬岔开或给替代画面,不得说概率、权限、亲密度、好感度。
+Q5：`画我自己` 默认指用户自己,不得使用 `/root/companion/backend/res/xiaoqi.png`。
+Q6：P6.1 不新增前端关系字段,不改变 /chat message、SSE、Android 兼容字段。
+```

@@ -162,3 +162,20 @@ docs/collaboration/model-layer/16_PM_模型层阶段验收与P6规划.md
 6. 用户补充：小七本人相关画像必须参考服务器固定图片 `/root/companion/backend/res/xiaoqi.png`。
 7. 如果当前生图工具不支持 reference image,模型/后端必须说明限制并降级,不得声称已实现参考图一致性。
 ```
+
+## 2026-04-28 P6 验收前修正要求
+
+```text
+模型/后端已交付 P6 ImageIntentBuilder,但用户确认两个点需要补齐：
+1. 小七画像提示词必须描述表情,并根据语义变化。
+2. 用户和小七关系疏远时,不应基本每次都画图；应由模型结合亲密度/关系状态概率式判断是否愿意画。
+
+PM 判断：P6 暂不最终验收,转 P6.1 hotfix。
+新增文档：docs/collaboration/model-layer/18_PM_P6验收前修正要求_表情与关系触发.md。
+
+P6.1 要求：
+1. expression_intent / body_language_hint 必须进入 final_prompt。
+2. 增加关系感知 draw_decision：疏远/防御高时大概率不画小七本人、自拍或私密房间,但不是硬禁,可自然拒绝/岔开/给替代画面。
+3. 修正 `画我自己` 误判：默认指用户自己,不得触发 xiaoqi.png。
+4. 不新增前端关系字段,不泄漏概率、亲密度、好感度或关系阶段。
+```

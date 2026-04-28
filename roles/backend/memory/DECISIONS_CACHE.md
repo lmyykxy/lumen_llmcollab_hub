@@ -87,3 +87,13 @@ Q3：后端需要检查参考图存在性/可读性,并审计生图 provider 是
 Q4：参考图路径只允许内部使用,不得返回前端。
 Q5：不支持 reference image 时必须明示限制并降级,不得随机生成小七外观。
 ```
+
+## 2026-04-28 P6.1 表情与关系触发修正
+
+```text
+Q1：P6 暂不最终验收,需先补 P6.1。
+Q2：后端/模型需要支持关系感知 draw_decision,疏远/防御高时对小七本人、自拍、私密画面大概率不调用生图 provider。
+Q3：draw_decision、概率、关系状态、reference path、final_prompt 都不得返回前端。
+Q4：小七本人画像 final_prompt 必须包含语义表情描述。
+Q5：`画我自己` 不得使用 xiaoqi.png；`画你/画小七/你的样子` 仍必须使用 xiaoqi.png。
+```

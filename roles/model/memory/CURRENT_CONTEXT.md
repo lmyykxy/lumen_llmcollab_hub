@@ -141,3 +141,17 @@ P4.2 技术方向已被 PM 认可,但公开 API 文档仍有 `stranger 关系起
 
 P6 规划文档：docs/collaboration/model-layer/16_PM_模型层阶段验收与P6规划.md。
 ```
+
+## 2026-04-28 P6.1 表情与关系触发修正
+
+```text
+P6 已交付,但 PM/用户暂不最终验收。新增 PM 文档：
+docs/collaboration/model-layer/18_PM_P6验收前修正要求_表情与关系触发.md。
+
+模型侧 P6.1 必须补：
+1. 小七本人画像的 expression_intent / body_language_hint 进入 final_prompt,根据用户语义变化。
+2. 疏远关系/高防御时增加 draw_decision：对小七本人、自拍、私密房间等请求大概率不画或改为更克制替代画面；不是硬禁。
+3. 关系较近时更可能画,但仍保持小七主体性,不变成奖励机制。
+4. `画我自己` 默认是用户自己,不得触发 xiaoqi.png；`画你/画小七/你的样子/你在房间里` 仍触发 xiaoqi.png。
+5. 可见回复不得泄漏好感度、亲密度、关系阶段、概率、权限、已解锁等词。
+```

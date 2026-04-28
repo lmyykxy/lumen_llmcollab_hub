@@ -167,3 +167,18 @@ hotfix 完成前不得开 P6。
 5. 如果不支持,交付报告必须明确说明限制并降级,不得随机生成一个新小七外观。
 6. 不得为 P6 新增前端关系字段或暴露内部状态数值。
 ```
+
+## 2026-04-28 P6.1 表情与关系触发修正
+
+```text
+P6 已交付,但 PM/用户要求先做 P6.1 后再验收。
+新增 PM 文档：docs/collaboration/model-layer/18_PM_P6验收前修正要求_表情与关系触发.md。
+
+后端侧注意：
+1. generate_image 执行前或工具调用前需要承接 draw_decision / image_consent_gate。
+2. 低亲密/高防御时,小七本人、自拍、正脸、私密房间请求应有概率不调用生图 provider；不是硬禁。
+3. 不画时应返回自然小七口吻,不暴露概率、关系状态或内部数值。
+4. 小七本人画像 final_prompt 必须带语义表情描述。
+5. `画我自己` 不得使用 `/root/companion/backend/res/xiaoqi.png`。
+6. 不改前端 API,不新增 relationship / probability 字段。
+```

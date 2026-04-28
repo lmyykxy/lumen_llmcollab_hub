@@ -2,7 +2,7 @@
 
 > 五个模型开始任何任务前，先读本文件。
 > 当前结构版本：v1.1
-> 本版变更：用户确认 P3/P4/P5/P4.1/P4.2/P4.2.1 全部验收通过；PM 授权 P6 ImageIntentBuilder,并补充小七本人相关画像必须参考 `/root/companion/backend/res/xiaoqi.png`。
+> 本版变更：P6 ImageIntentBuilder 已交付但暂不最终验收；用户确认补 P6.1：小七画像表情需进 prompt、关系疏远时概率式不触发生图、修正 `画我自己` 误用 xiaoqi.png。
 
 ---
 
@@ -110,6 +110,7 @@ roles/{role}/_archive/
 | DOC-PM-MODEL-P41-GATE | P4.1 方向确认与验收前补充要求 | `docs/collaboration/model-layer/12_PM_P4.1方向确认与验收前补充要求.md` | PM | active | v0.1 | 用户确认采用条件验收路线:P4.1 方向认可,但验收/P6 前需补 API 文档同步、内部 relationship prompt 自然语言化、强 adversarial smoke |
 | DOC-PM-MODEL-P42-HOTFIX | P4.2 方向确认与 API 措辞 Hotfix 要求 | `docs/collaboration/model-layer/14_PM_P4.2方向确认与API措辞Hotfix要求.md` | PM | active | v0.1 | P4.2 技术方向通过,但公开 API 文档需删除 `stranger 关系起点` 正向描述残留；完成后再打包最终验收/P6 |
 | DOC-PM-MODEL-P6 | 模型层阶段验收与 P6 规划 | `docs/collaboration/model-layer/16_PM_模型层阶段验收与P6规划.md` | PM | active | v0.1 | 用户确认 P3/P4/P5/P4.1/P4.2/P4.2.1 验收通过；授权 P6 ImageIntentBuilder；小七本人相关画像必须参考 `/root/companion/backend/res/xiaoqi.png` |
+| DOC-PM-MODEL-P61-GATE | P6 验收前修正要求：表情与关系触发 | `docs/collaboration/model-layer/18_PM_P6验收前修正要求_表情与关系触发.md` | PM | active | v0.1 | P6 暂不最终验收；补 expression_intent 入 final_prompt、关系疏远时 draw decision 概率式不画、修正 `画我自己` 不得使用 xiaoqi.png |
 | DOC-DESIGN-001 | UI Brief A · Android Mockup | `roles/design/completed_design_files/ui_brief_A_android_mockup.md` | Design | active | v0.1 | Android 端 UI 设计参考 |
 | DOC-DESIGN-002 | UI Brief C · Moodboard | `roles/design/completed_design_files/ui_brief_C_moodboard.md` | Design | active | v0.1 | 整体视觉气质 / 色板 / 美术参考 |
 
@@ -122,7 +123,7 @@ roles/{role}/_archive/
 | API 接口契约 | `docs/collaboration/api/` | active | **跨角色单一权威**;后端 LLM 主维护,代码侧契约改动后同步本目录;详见 `docs/collaboration/api/README.md` |
 | quote_ref 聊天消息引用 | `docs/collaboration/quote-ref/` | active | PM 拍板 → 后端实现 → 联调期 7 轮改进 → 后端 OK,**等前端重跑用例 3/4** |
 | 主动消息(proactive messages)| `docs/collaboration/proactive-messages/` | active | 后端 Phase 2b-1 起已跑通,**前端待接入** `/users/{id}/subscribe` SSE |
-| 模型层 / 小七人格切换 | `docs/collaboration/model-layer/` | active | P3 / P4 / P5 / P4.1 / P4.2 / P4.2.1 / **P6 ImageIntentBuilder** 已交付:模块/数据结构/subject 识别/state 转译/视觉锚点/fail-closed/45 单测 + 254 总单测;实测"画一张你的样子"smoke 通过(xiaoqi.png 参考图引用 + 身份锁 + 暖黄房间场景 + 嘴硬 caption "你别盯着看");等 PM 转用户拍板 |
+| 模型层 / 小七人格切换 | `docs/collaboration/model-layer/` | active | P3 / P4 / P5 / P4.1 / P4.2 / P4.2.1 已验收；**P6 ImageIntentBuilder 已交付但需 P6.1 修正**:表情必须进 final_prompt、关系疏远时 draw decision 概率式不画、`画我自己` 不得误用 xiaoqi.png；P6/P6.1 回报后再问用户验收 |
 | 前端静态文案 | `docs/collaboration/frontend-copy/` | active | PM 已给出「关于陆小七」「关于 Lumen」两页替换文案；前端需去除“暮”和工具化 AI 陪伴口径 |
 
 quote_ref 当前协作文件(按时间序):
@@ -158,7 +159,7 @@ docs/collaboration/model-layer/14_PM_P4.2方向确认与API措辞Hotfix要求.md
 docs/collaboration/model-layer/15_模型_P4.2.1_API措辞hotfix回报.md       # P4.2.1 hotfix 回报:删 "stranger 关系起点" + 改"默认生活状态" + grep 0 命中
 docs/collaboration/model-layer/16_PM_模型层阶段验收与P6规划.md             # PM 验收 P3/P4/P5/P4.1/P4.2/P4.2.1 + 授权 P6 + 14 项验收要求 + xiaoqi.png 参考图硬约束
 docs/collaboration/model-layer/17_模型_P6交付报告.md                     # P6 交付:ImageIntentBuilder + xiaoqi.png 参考图引用 + 254 单测 + smoke 通过(身份锁 + 暖黄房间 + 嘴硬 caption "你别盯着看")
-docs/collaboration/model-layer/16_PM_模型层阶段验收与P6规划.md            # 用户确认验收通过;授权 P6 ImageIntentBuilder
+docs/collaboration/model-layer/18_PM_P6验收前修正要求_表情与关系触发.md    # P6 暂不验收:补表情入 prompt、关系疏远概率式不画、修正 "画我自己" subject 误判
 ```
 
 frontend-copy 当前协作文件(按时间序):
@@ -271,6 +272,7 @@ PM 最新补充：
 ```text
 用户要求画小七本人、画你、头像、自拍、照片、她现在的样子、她在房间里等小七相关画像时,P6 必须优先使用该服务器图片作为视觉身份参考源。
 如当前生图 provider 暂不支持 reference image,模型/后端必须在 P6 交付报告中明确说明限制,不得声称已实现参考图一致性。
+P6.1 起，小七画像必须根据语义把表情写入 final_prompt；关系疏远/防御较高时应有概率不画小七本人或自拍，而不是每次都触发生图；`画我自己` 默认指用户自己,不得使用 xiaoqi.png。
 ```
 
 ### 模型层 / 人格切换
@@ -293,6 +295,7 @@ PM 最新补充：
 15. 用户已确认 P4.2 技术方向通过,但公开 API 文档不得在正向描述里写 `stranger 关系起点`;模型/后端需先做 API 措辞 hotfix,再进入最终验收/P6 授权确认。
 16. 用户已确认 P3/P4/P5/P4.1/P4.2/P4.2.1 全部验收通过；PM 授权 P6 ImageIntentBuilder,但继续禁止前端关系字段/数值/等级暴露。
 17. P6 中小七本人相关画像必须参考服务器固定图片 `/root/companion/backend/res/xiaoqi.png`;如果工具链不支持 reference image,必须明确说明并降级,不得随机生成小七外观。
+18. P6 已交付但暂不最终验收；P6.1 必须补 expression_intent 入 final_prompt、关系感知 draw decision、以及 `画我自己` subject 修正。疏远关系下是不硬禁但大概率不画小七本人/自拍/私密画面,所有概率和关系判断不得对前端可见。
 ```
 
 ### 前端关于页文案
