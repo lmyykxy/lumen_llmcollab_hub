@@ -128,7 +128,7 @@ roles/{role}/_archive/
 | API 接口契约 | `docs/collaboration/api/` | active | **跨角色单一权威**;后端 LLM 主维护,代码侧契约改动后同步本目录;详见 `docs/collaboration/api/README.md` |
 | quote_ref 聊天消息引用 | `docs/collaboration/quote-ref/` | active | PM 拍板 → 后端实现 → 联调期 7 轮改进 → 后端 OK,**等前端重跑用例 3/4** |
 | 主动消息(proactive messages)| `docs/collaboration/proactive-messages/` | active | 后端 Phase 2b-1 起已跑通,**前端待接入** `/users/{id}/subscribe` SSE |
-| 模型层 / 小七人格切换 | `docs/collaboration/model-layer/` | active | P3-P6 / P6.1 / P6.2 / **P6.3** 已交付;**P6.3** 改 generate_image 工具描述加 6 维度(主体/动作视角/场景/构图/光照/风格),smoke 实测小七从正脸 portrait 升级到侧脸看窗外;P7 深度设计完成(Hybrid Purposeful Context Orchestrator),等用户拍板开工;P6.2 跟 §6.9 仍冲突等 PM 重审 |
+| 模型层 / 小七人格切换 | `docs/collaboration/model-layer/` | active | P3-P6.3 已交付;**P7 用户拍板走 LLM 主导版**(不是 PM §13.1 规则版):LLM 看 skill index 自己思考决定 read_skill,max=3,image skill 整合;跟 PM 推荐 P7.1 规则版冲突,等 PM 复审 — 详见 `24_模型_P7用户拍板LLM主导方案.md`;P6.2 跟 §6.9 仍冲突等 PM 重审 |
 | 前端静态文案 | `docs/collaboration/frontend-copy/` | active | PM 已给出「关于陆小七」「关于 Lumen」两页替换文案；前端需去除“暮”和工具化 AI 陪伴口径 |
 
 quote_ref 当前协作文件(按时间序):
@@ -170,6 +170,7 @@ docs/collaboration/model-layer/20_模型_P6.2修正报告.md                   #
 docs/collaboration/model-layer/21_PM_P7目的性上下文构造与按需Skill读取规划.md # P7 规划:Resident Core + Turn State + Skill Index + Demand Skills,按目的 read_skill
 docs/collaboration/model-layer/22_PM_P7深度设计_角色上下文编排方案.md       # P7 v0.2 深度设计:对比现有方案后定案混合式上下文编排,首批 6 个 skill + 规则路由优先
 docs/collaboration/model-layer/23_模型_P6.3工具描述6维度提示词工程.md     # P6.3 纯 prompt 工程:工具描述加 6 维度(主体/动作视角/场景/构图/光照/风格)+ 反例正例;LLM 写更结构化 prompt;smoke 实测从正脸 portrait 提升到小七侧脸看窗外
+docs/collaboration/model-layer/24_模型_P7用户拍板LLM主导方案.md           # 用户拍板 P7 走 LLM 主导(不是 PM §13.1 规则版):LLM 看 skill index 自己思考决定调用,read_skill tool,max=3,image skill 整合;跟 PM 推荐版冲突,等 PM 复审
 ```
 
 frontend-copy 当前协作文件(按时间序):
