@@ -182,3 +182,32 @@ P6 已交付,但 PM/用户要求先做 P6.1 后再验收。
 5. `画我自己` 不得使用 `/root/companion/backend/res/xiaoqi.png`。
 6. 不改前端 API,不新增 relationship / probability 字段。
 ```
+
+## 2026-04-28 P7 目的性上下文构造
+
+```text
+PM 新增规划：
+docs/collaboration/model-layer/21_PM_P7目的性上下文构造与按需Skill读取规划.md。
+
+后端侧注意：
+1. 需要评估 PromptRegistry 是否扩展为 SkillRegistry,或新增 app/agent/skill_registry.py。
+2. read_skill 必须是内部白名单能力,只能通过 skill_id 读取,不能暴露任意文件读取。
+3. ContextBuilder 可升级为 ContextOrchestrator,记录 skills_loaded_count / skill_ids / skills_total budget。
+4. CharacterState 需要能提供 current_location,或至少从 current_activity 推断 location。
+5. P7 不改前端 API / SSE / message 字段,skill_id、prompt、routing reason 不得返回前端。
+```
+
+## 2026-04-28 P7 深度设计
+
+```text
+新增 PM 深度设计文档：
+docs/collaboration/model-layer/22_PM_P7深度设计_角色上下文编排方案.md。
+
+后端侧执行重点：
+1. P7.1 先实现规则版 SkillRegistry / ContextOrchestrator,不要求每轮多一次 LLM planner。
+2. read_skill 如后续实现,必须只接受 enum skill_id,不能接受 path。
+3. 首批 skill 只做 bedroom/window/image_self/image_scene/diary_moment/relationship_voice。
+4. context_budget 增加 skill_ids / skills_total / skills_loaded_count。
+5. skill 内容、routing reason、prompt 不得返回前端或 SSE。
+6. unknown skill / over budget 必须 fail closed,不能让模型编造房间设定。
+```

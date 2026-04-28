@@ -179,3 +179,40 @@ P6.1 要求：
 3. 修正 `画我自己` 误判：默认指用户自己,不得触发 xiaoqi.png。
 4. 不新增前端关系字段,不泄漏概率、亲密度、好感度或关系阶段。
 ```
+
+## 2026-04-28 P7 目的性上下文构造
+
+```text
+用户提出：角色上下文构造应该更有目的性。部分提示词固定常驻,部分提示词应由模型思考后通过 read_skill 按需读取。
+
+PM 已新增：
+docs/collaboration/model-layer/21_PM_P7目的性上下文构造与按需Skill读取规划.md。
+
+P7 方向：
+1. Resident Core 每轮常驻：身份、语气、安全、最小关系自然语言、必要历史。
+2. Turn State 先读取/推断小七当前状态,例如 current_activity/current_location。
+3. Skill Index 只常驻短索引,不常驻 skill 正文。
+4. Demand Skills 按 intent/state 读取,例如 bedroom / image_self / image_scene / diary / relationship_voice。
+5. 典型链路：用户问“你今天在做什么” → 先看状态判断“小七在卧室” → 读取 bedroom skill → 再回答。
+6. `read_skill` 只能读白名单 skill_id,不得任意读文件,skill 内容和路由理由不得返回前端。
+7. P6.2 的“画你窗外/画你的房间”语义冲突纳入 P7 路由规则：含“画你/你的”默认小七为主体并使用 xiaoqi.png；纯“画窗外/画房间一角”默认纯场景。
+```
+
+## 2026-04-28 P7 深度设计
+
+```text
+用户要求仔细对比现有软件/项目并重新设计,因为该功能会显著影响角色输出。
+
+PM 新增：
+docs/collaboration/model-layer/22_PM_P7深度设计_角色上下文编排方案.md。
+
+结论：
+1. 借鉴 Claude Skills 的 progressive disclosure,但 skill 是小七生活事实/叙事素材,不是任务教程。
+2. 借鉴 LangChain context middleware,但不暴露 agent 工具心智。
+3. 借鉴 LlamaIndex Router 的 metadata selector,但不用纯问答检索口径。
+4. 借鉴 OpenAI tools / Semantic Kernel plugins,但每轮只暴露少量白名单 skill。
+5. 拒绝纯全量 prompt、纯向量 RAG、纯 LLM planner、多 agent handoff。
+6. 定案 Hybrid Purposeful Context Orchestrator：规则路由优先 + 状态解析 + 可选 read_skill。
+7. 首批只做 6 个 skill：bedroom、window、image_self、image_scene、diary_moment、relationship_voice。
+8. 每轮最多 3 个 skill,普通闲聊应 0 skill,skill 内容不得对前端可见。
+```
