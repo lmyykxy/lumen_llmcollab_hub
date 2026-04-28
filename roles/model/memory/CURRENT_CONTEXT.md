@@ -68,3 +68,21 @@ PM 拍板：
 
 下一步：模型/后端立即开始 P1，并回传 5 份 role md diff、测试结果和 smoke test 摘要。
 ```
+
+## 2026-04-28 用户验收 P1/P2 与 P3
+
+```text
+模型已交付 P1/P2：
+- docs/collaboration/model-layer/04_模型_P1人格替换交付报告.md
+- docs/collaboration/model-layer/05_模型_P2交付报告.md
+
+用户已确认 P1/P2 验收，并同意进入 P3。
+PM 已新增 docs/collaboration/model-layer/06_PM_用户验收确认与P3开工建议.md。
+
+P3 必须处理：
+1. schedule/proactive 系统播报式话术硬过滤或重写。
+2. prompt/context 预算日志。
+3. runtime cards forbidden 测试。
+4. unknown character fallback xiaoqi 或 fail closed。
+5. quote_ref / image_description / SSE / Android 字段不能被 ContextBuilder 改坏。
+```

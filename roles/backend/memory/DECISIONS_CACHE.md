@@ -35,3 +35,13 @@ Q3：CharacterState 正式来源走 DB schema。
 Q4：TurnAnalyzer MVP 先同进程 async，失败不影响 /chat SSE。
 Q5：forbidden output 测试只扫运行时 prompt、后端用户可见模板、runtime cards，不扫历史文档。
 ```
+
+## 2026-04-28 用户验收 P1/P2 与 P3
+
+```text
+Q1：用户已确认 P1/P2 验收，同意进入 P3 ContextBuilder。
+Q2：P3 不得破坏 /chat SSE、message 字段、quote_ref、image_description、Android 兼容字段。
+Q3：P3 需要补 model_run_logs 或等价最小日志表，记录 prompt_version / prompt_sha256 / task_type / success。
+Q4：schedule/proactive 工具播报式话术必须硬过滤或重写。
+Q5：unknown character 必须 fallback xiaoqi 或 fail closed。
+```

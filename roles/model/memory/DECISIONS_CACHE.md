@@ -35,3 +35,14 @@ Q3：CharacterState 使用 DB schema。
 Q4：TurnAnalyzer MVP 使用同进程 async 后台任务，不阻塞 /chat SSE。
 Q5：forbidden output 测试范围限定 runtime prompt、后端用户可见模板、runtime cards；不扫 docs/collaboration、roles/*/completed_design_files、legacy_reference。
 ```
+
+## 2026-04-28 用户验收 P1/P2 与 P3
+
+```text
+Q1：用户已确认 P1/P2 验收。
+Q2：用户同意进入 P3 ContextBuilder。
+Q3：P3 必须补 runtime cards forbidden 测试。
+Q4：P3 必须补 prompt/context 预算日志。
+Q5：unknown character 不得产生泛化助手人格，必须 fallback xiaoqi 或 fail closed。
+Q6：schedule/proactive 系统播报式话术进入硬过滤或重写范围。
+```
