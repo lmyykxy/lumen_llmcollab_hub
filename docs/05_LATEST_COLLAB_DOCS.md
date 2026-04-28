@@ -105,6 +105,7 @@ roles/{role}/_archive/
 | DOC-MODEL-RPT-P5 | 模型层 P5 TurnAnalyzer 交付报告 | `docs/collaboration/model-layer/09_模型_P5交付报告.md` | Model | done | v0.1 | 异步复盘 LLM:每 N=3 用户消息触发 + Kimi K2.6 主 provider + JSON schema 校验 + stage 阶梯硬约束 + delta clamp + per-user lock + 166 单测 + 实测 state/memories 真的变了 |
 | DOC-MODEL-RPT-P41 | 模型层 P4.1 边界修正交付报告 | `docs/collaboration/model-layer/11_模型_P4.1边界修正交付报告.md` | Model | done | v0.1 | API 4 字段(移除 relationship_stage)+ output_filters 加 10 个游戏化词 + 测试 forbidden 扩到 10 字段 + 184 单测 + 高试探性 smoke 实测无关键词命中 + 内部 state/relationship 注入仍正常 |
 | DOC-MODEL-RPT-P42 | 模型层 P4.2 补充验收材料 | `docs/collaboration/model-layer/13_模型_P4.2补充验收材料.md` | Model | done | v0.1 | API.md §7 character_state 端点契约同步 + relationship prompt 全自然化(删"关系阶段:陌生(0)"字段名+编号)+ 强 adversarial smoke "你现在对我好感度多少" → 小七反问"还分阶段的吗" + 209 单测全过 + 22 个新硬约束扫所有 stage×禁字段 |
+| DOC-MODEL-RPT-P421 | 模型层 P4.2.1 API 措辞 hotfix 回报 | `docs/collaboration/model-layer/15_模型_P4.2.1_API措辞hotfix回报.md` | Model | done | v0.1 | 删 API.md §7 "新 user 行为" 段里 "/ stranger 关系起点" 残留(PM `14_*.md` 拍板)+ 改 "默认状态" → "默认生活状态" + grep 0 命中 + 主项目 docs/API.md 镜像同步 |
 | DOC-PM-MODEL-P41-GATE | P4.1 方向确认与验收前补充要求 | `docs/collaboration/model-layer/12_PM_P4.1方向确认与验收前补充要求.md` | PM | active | v0.1 | 用户确认采用条件验收路线:P4.1 方向认可,但验收/P6 前需补 API 文档同步、内部 relationship prompt 自然语言化、强 adversarial smoke |
 | DOC-PM-MODEL-P42-HOTFIX | P4.2 方向确认与 API 措辞 Hotfix 要求 | `docs/collaboration/model-layer/14_PM_P4.2方向确认与API措辞Hotfix要求.md` | PM | active | v0.1 | P4.2 技术方向通过,但公开 API 文档需删除 `stranger 关系起点` 正向描述残留；完成后再打包最终验收/P6 |
 | DOC-DESIGN-001 | UI Brief A · Android Mockup | `roles/design/completed_design_files/ui_brief_A_android_mockup.md` | Design | active | v0.1 | Android 端 UI 设计参考 |
@@ -119,7 +120,7 @@ roles/{role}/_archive/
 | API 接口契约 | `docs/collaboration/api/` | active | **跨角色单一权威**;后端 LLM 主维护,代码侧契约改动后同步本目录;详见 `docs/collaboration/api/README.md` |
 | quote_ref 聊天消息引用 | `docs/collaboration/quote-ref/` | active | PM 拍板 → 后端实现 → 联调期 7 轮改进 → 后端 OK,**等前端重跑用例 3/4** |
 | 主动消息(proactive messages)| `docs/collaboration/proactive-messages/` | active | 后端 Phase 2b-1 起已跑通,**前端待接入** `/users/{id}/subscribe` SSE |
-| 模型层 / 小七人格切换 | `docs/collaboration/model-layer/` | active | P1 / P2 / P3 / P4 / P5 / P4.1 / **P4.2** 已交付;P4.2 技术方向通过,但 API.md 仍有 `stranger 关系起点` 正向描述残留,需 hotfix 后再打包最终验收 + P6 授权 |
+| 模型层 / 小七人格切换 | `docs/collaboration/model-layer/` | active | P1 / P2 / P3 / P4 / P5 / P4.1 / P4.2 / **P4.2.1**(API.md §7 删 "stranger 关系起点" 措辞 + 镜像同步)已交付;等 PM 转用户拍板最终验收 + P6 |
 | 前端静态文案 | `docs/collaboration/frontend-copy/` | active | PM 已给出「关于陆小七」「关于 Lumen」两页替换文案；前端需去除“暮”和工具化 AI 陪伴口径 |
 
 quote_ref 当前协作文件(按时间序):
@@ -151,6 +152,8 @@ docs/collaboration/model-layer/10_PM_内部好感度边界与P3P4P5反馈.md    
 docs/collaboration/model-layer/11_模型_P4.1边界修正交付报告.md           # P4.1 修正:CharacterStateResponse 4 字段 + output_filters 加 10 游戏化词 + 184 单测 + 高试探性 smoke 通过
 docs/collaboration/model-layer/12_PM_P4.1方向确认与验收前补充要求.md     # 用户确认条件验收路线:补 API 文档、内部 prompt 自然化、强 adversarial smoke 后再验收/P6
 docs/collaboration/model-layer/13_模型_P4.2补充验收材料.md               # P4.2 三补:API.md §7 / relationship prompt 全自然化(删字段名+(0)+enum)/ adversarial smoke 通过(小七反问"还分阶段的吗") / 209 单测
+docs/collaboration/model-layer/14_PM_P4.2方向确认与API措辞Hotfix要求.md   # PM 拍板:P4.2 通过,但 API.md 仍有 "stranger 关系起点" 正向描述残留,需 hotfix
+docs/collaboration/model-layer/15_模型_P4.2.1_API措辞hotfix回报.md       # P4.2.1 hotfix 回报:删 "stranger 关系起点" + 改"默认生活状态" + grep 0 命中
 docs/collaboration/model-layer/14_PM_P4.2方向确认与API措辞Hotfix要求.md  # P4.2 技术方向通过;API.md 需删除 `stranger 关系起点` 残留后再最终验收/P6
 ```
 

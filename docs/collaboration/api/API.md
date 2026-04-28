@@ -363,7 +363,7 @@ Subscribe 是 best-effort 推送——**丢事件是正常的**(client 慢 → q
 | `current_activity` | string | 小七当前在做什么。动词性短语,如"画画" / "在房间里待着" / "看番"。可选格式 |
 | `last_updated_at` | ISO-8601 UTC | 最近一次状态变化时间 |
 
-**新 user 行为**:第一次调会触发懒创建,返回默认状态(`mood="平静" / current_activity="在房间里待着" / stranger 关系起点`)。
+**新 user 行为**:第一次调会触发懒创建,返回默认生活状态(`mood="平静" / current_activity="在房间里待着"`)。
 
 **永远不返回的字段**(产品边界 / PM `10_*.md` `12_*.md` 拍板,任何 PR 添加这类字段会被 schema 测试立即拒绝):
 
@@ -520,3 +520,4 @@ curl -N $BASE/users/$USER_ID/subscribe
 
 - `2026-04-24` 初版,对齐 `v0.4-phase2c`。
 - `2026-04-28` 新增 §7 `GET /users/{id}/character_state`(P4 落地 + P4.1 移除 `relationship_stage` 字段 / P4.2 文档同步)。前端响应严格 4 字段,**关系数值 / 阶段 / 防御度永远不返**。
+- `2026-04-28` P4.2.1 hotfix:§7 "新 user 行为" 段从`默认状态(... / stranger 关系起点)` 改成 `默认生活状态(...)`。公开 API 契约的正向描述不再暗示关系阶段模型(PM `14_*.md`)。
