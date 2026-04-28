@@ -102,3 +102,16 @@ Q4：relationship_stage / stage / trust / intimacy / defense_level / affection_s
 Q5：模型/后端需先做 API 措辞 hotfix。
 Q6：hotfix 完成后再把 P3/P4/P5/P4.1/P4.2 打包给用户最终确认,再决定 P6。
 ```
+
+## 2026-04-28 模型层阶段验收与 P6
+
+```text
+Q1：用户确认 P3/P4/P5/P4.1/P4.2/P4.2.1 全部验收通过。
+Q2：授权进入 P6 ImageIntentBuilder。
+Q3：P6 不改 /chat message 字段、不破坏 SSE、不新增前端关系字段。
+Q4：P6 可以内部读取 CharacterState / RelationshipState,但不得对前端暴露关系变量或 prompt。
+Q5：P6 必须遵守视觉身份锚点：头发、帽子、眼睛、面貌气质、体型固定；眼镜、穿着、姿势、表情强度、光照、场景可变。
+Q6：小七本人相关画像必须参考服务器固定图片 `/root/companion/backend/res/xiaoqi.png`。
+Q7：如果当前 generate_image 工具不支持 reference image / image-to-image,模型/后端必须在 P6 交付中明确说明限制并降级,不得随机生成小七外观。
+Q8：P6 交付必须包含普通聊天不误触发生图、明确生图、生图意图状态化、固定参考图、视觉锚点、forbidden output、SSE/API 兼容性测试。
+```

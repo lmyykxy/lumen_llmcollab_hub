@@ -142,3 +142,23 @@ PM 已新增 docs/collaboration/model-layer/14_PM_P4.2方向确认与API措辞Ho
 
 hotfix 完成前,不打包最终验收,也不授权 P6。
 ```
+
+## 2026-04-28 模型层阶段验收与 P6
+
+```text
+模型/后端已交付 P4.2.1 API 措辞 hotfix：API.md 删除 `stranger 关系起点`,改为默认生活状态,主项目 docs/API.md 镜像同步。
+
+用户已确认：P3 / P4 / P5 / P4.1 / P4.2 / P4.2.1 验收都通过。
+
+PM 已新增：
+docs/collaboration/model-layer/16_PM_模型层阶段验收与P6规划.md
+
+当前拍板：
+1. 本轮模型层基础架构验收通过。
+2. 授权进入 P6 ImageIntentBuilder。
+3. P6 不改前端关系字段,不暴露 prompt / hidden_mood / trust / intimacy / defense_level / relationship_stage / affection_score。
+4. P6 重点是把小七身份、状态、情绪、视觉锚点、用户生图意图稳定组织为 ImageIntent。
+5. 视觉边界继续有效：眼睛固定,眼镜可变。
+6. 用户补充：小七本人相关画像必须参考服务器固定图片 `/root/companion/backend/res/xiaoqi.png`。
+7. 如果当前生图工具不支持 reference image,模型/后端必须说明限制并降级,不得声称已实现参考图一致性。
+```

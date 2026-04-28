@@ -77,3 +77,13 @@ Q3：公开文档只描述默认生活状态:mood/current_activity。
 Q4：主项目 docs/API.md 镜像必须同步。
 Q5：hotfix 完成并经用户确认前,不得开 P6。
 ```
+
+## 2026-04-28 P6 ImageIntentBuilder
+
+```text
+Q1：用户确认 P3/P4/P5/P4.1/P4.2/P4.2.1 验收通过,授权 P6。
+Q2：小七本人相关画像必须参考服务器文件 `/root/companion/backend/res/xiaoqi.png`。
+Q3：后端需要检查参考图存在性/可读性,并审计生图 provider 是否支持 reference image。
+Q4：参考图路径只允许内部使用,不得返回前端。
+Q5：不支持 reference image 时必须明示限制并降级,不得随机生成小七外观。
+```

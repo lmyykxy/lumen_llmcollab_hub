@@ -153,3 +153,17 @@ P4.2 技术方向已被 PM 认可,但 docs/collaboration/api/API.md 仍有 `stra
 新增 PM 文档：docs/collaboration/model-layer/14_PM_P4.2方向确认与API措辞Hotfix要求.md。
 hotfix 完成前不得开 P6。
 ```
+
+## 2026-04-28 P6 ImageIntentBuilder
+
+```text
+用户已确认 P3/P4/P5/P4.1/P4.2/P4.2.1 验收通过,PM 已授权进入 P6 ImageIntentBuilder。
+
+后端侧必须注意：
+1. 小七本人相关画像必须参考服务器固定图片 `/root/companion/backend/res/xiaoqi.png`。
+2. 该路径是服务端内部视觉身份参考源,不得作为前端字段返回。
+3. P6 需要先检查该文件是否存在、可读。
+4. 需要审计当前 generate_image provider 是否支持 reference image / image-to-image。
+5. 如果不支持,交付报告必须明确说明限制并降级,不得随机生成一个新小七外观。
+6. 不得为 P6 新增前端关系字段或暴露内部状态数值。
+```

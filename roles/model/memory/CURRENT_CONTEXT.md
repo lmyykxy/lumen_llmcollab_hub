@@ -125,3 +125,19 @@ P4.2 技术方向已被 PM 认可,但公开 API 文档仍有 `stranger 关系起
 
 新增 PM 文档：docs/collaboration/model-layer/14_PM_P4.2方向确认与API措辞Hotfix要求.md。
 ```
+
+## 2026-04-28 P6 ImageIntentBuilder
+
+```text
+用户已确认 P3/P4/P5/P4.1/P4.2/P4.2.1 验收通过,PM 已授权进入 P6 ImageIntentBuilder。
+
+模型侧必须注意：
+1. 小七本人相关画像必须参考服务器固定图片 `/root/companion/backend/res/xiaoqi.png`。
+2. 触发范围包括：画小七、画你、头像、自拍、照片、你现在的样子、你在房间里、你今天穿什么等。
+3. 先审计 generate_image 是否支持 reference image / image-to-image / character reference。
+4. 支持则 ImageIntent 必须携带该参考图路径；不支持则必须明确说明限制并以视觉锚点 prompt 兜底,不得声称已实现参考图一致性。
+5. 参考图路径只用于服务端内部,不得返回前端。
+6. 文件缺失或不可读时,小七本人相关生图不得随机生成新角色。
+
+P6 规划文档：docs/collaboration/model-layer/16_PM_模型层阶段验收与P6规划.md。
+```
