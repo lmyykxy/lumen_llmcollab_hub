@@ -112,3 +112,16 @@ P4.1 方向已被 PM/用户认可,但不是最终验收。模型侧需先补：
 新增 PM 文档：docs/collaboration/model-layer/12_PM_P4.1方向确认与验收前补充要求.md。
 补充完成前不得启动 P6 ImageIntentBuilder。
 ```
+
+## 2026-04-28 P4.2 API 措辞 Hotfix
+
+```text
+P4.2 技术方向已被 PM 认可,但公开 API 文档仍有 `stranger 关系起点` 正向描述残留。
+模型侧需配合后端做小 hotfix：
+1. 将 character_state 新 user 行为改成只描述默认生活状态。
+2. 删除公开 API 正向描述里的 stranger / 关系起点。
+3. 保持内部 relationship_states 和 prompt 自然语言化方向不变。
+4. hotfix 完成前不得开 P6。
+
+新增 PM 文档：docs/collaboration/model-layer/14_PM_P4.2方向确认与API措辞Hotfix要求.md。
+```
