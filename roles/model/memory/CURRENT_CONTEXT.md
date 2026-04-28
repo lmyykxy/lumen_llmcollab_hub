@@ -86,3 +86,17 @@ P3 必须处理：
 4. unknown character fallback xiaoqi 或 fail closed。
 5. quote_ref / image_description / SSE / Android 字段不能被 ContextBuilder 改坏。
 ```
+
+## 2026-04-28 内部好感度边界
+
+```text
+用户补充拍板：需要有内部好感度/关系变量,让用户从小七态度变化中感知关系变化；但这些变量不能给前端。
+
+模型侧执行边界：
+1. affection_score 或 trust / intimacy / defense_level / stage 等内部变量允许存在。
+2. 变量用于影响回复语气、嘴硬程度、防御强度、主动消息、私密分享边界和长期记忆权重。
+3. prompt 中不要直接暴露数值,优先渲染为自然语言关系状态。
+4. 不得向前端/API 暴露 affection_score、trust、intimacy、defense_level、relationship_stage。
+5. P4 报告中的 `relationship_stage` 前端字段需要回收,改为纯内部字段。
+6. P5 TurnAnalyzer 的内部 delta 方向保留,但必须守住前端不可见边界。
+```

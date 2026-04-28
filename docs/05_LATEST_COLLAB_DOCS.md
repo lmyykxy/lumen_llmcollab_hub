@@ -1,8 +1,8 @@
 # 最新协作文档追踪表
 
 > 五个模型开始任何任务前，先读本文件。
-> 当前结构版本：v0.6
-> 本版变更：仓库收敛为最小协作结构，只保留角色记忆、角色正式文档、公共协作区和本追踪表。
+> 当前结构版本：v0.7
+> 本版变更：补充内部好感度边界；内部关系变量允许存在,但不得返回前端或形成 UI 数值/等级。
 
 ---
 
@@ -115,7 +115,7 @@ roles/{role}/_archive/
 | API 接口契约 | `docs/collaboration/api/` | active | **跨角色单一权威**;后端 LLM 主维护,代码侧契约改动后同步本目录;详见 `docs/collaboration/api/README.md` |
 | quote_ref 聊天消息引用 | `docs/collaboration/quote-ref/` | active | PM 拍板 → 后端实现 → 联调期 7 轮改进 → 后端 OK,**等前端重跑用例 3/4** |
 | 主动消息(proactive messages)| `docs/collaboration/proactive-messages/` | active | 后端 Phase 2b-1 起已跑通,**前端待接入** `/users/{id}/subscribe` SSE |
-| 模型层 / 小七人格切换 | `docs/collaboration/model-layer/` | active | P1 / P2 / P3 / P4 / P5(TurnAnalyzer 异步复盘:每 N=3 用户消息触发 + Kimi K2.6 主 provider + 4 层硬约束 + state 真的会变了)已完成;166 单测全过;实测 prompt_summary / trust+1 / memories+3;等 PM 拍板 P6 ImageIntentBuilder |
+| 模型层 / 小七人格切换 | `docs/collaboration/model-layer/` | active | P1 / P2 / P3 / P4 / P5(TurnAnalyzer 异步复盘:每 N=3 用户消息触发 + Kimi K2.6 主 provider + 4 层硬约束 + state 真的会变了)已完成;166 单测全过;实测 prompt_summary / trust+1 / memories+3;PM 已补充内部好感度边界:内部可有关系变量,但不得返回前端;P4 需调整 `relationship_stage` 暴露;P6 授权需等用户确认 |
 | 前端静态文案 | `docs/collaboration/frontend-copy/` | active | PM 已给出「关于陆小七」「关于 Lumen」两页替换文案；前端需去除“暮”和工具化 AI 陪伴口径 |
 
 quote_ref 当前协作文件(按时间序):
@@ -143,6 +143,7 @@ docs/collaboration/model-layer/06_PM_用户验收确认与P3开工建议.md     
 docs/collaboration/model-layer/07_模型_P3交付报告.md                   # P3 交付:ContextBuilder + budget log + output_filters + unknown char fallback + runtime cards forbidden + 115 单测 + 5 smoke
 docs/collaboration/model-layer/08_模型_P4交付报告.md                   # P4 交付:character_states / relationship_states DB + GET /character_state 脱敏端点 + state prompt 注入 + 138 单测
 docs/collaboration/model-layer/09_模型_P5交付报告.md                   # P5 交付:TurnAnalyzer 异步复盘(每 N=3 触发 + Kimi 主 provider + JSON schema + stage 阶梯 + delta clamp + per-user lock)+ 166 单测 + 实测 state 真的变了
+docs/collaboration/model-layer/10_PM_内部好感度边界与P3P4P5反馈.md      # PM 补充拍板:内部好感度/关系变量允许,前端/API 不暴露关系数值或 relationship_stage
 ```
 
 frontend-copy 当前协作文件(按时间序):
@@ -195,7 +196,7 @@ GET /messages quote_ref.id 响应为 number
 禁止未经 PM 拍板引入：
 
 ```text
-好感度 / 亲密度数字
+前端可见的好感度 / 亲密度数字
 任务中心
 多角色市场
 Prompt 编辑器
@@ -204,6 +205,14 @@ Prompt 编辑器
 关系等级 UI
 工具式助手语气
 情感勒索或“你不回来我活不下去”式依赖
+```
+
+PM 最新补充：
+
+```text
+内部可以有好感度或关系变量,用于驱动小七态度、语气、主动程度、私密分享程度的变化。
+这些变量不得作为前端字段、UI 数字、进度条、关系等级或运营玩法暴露。
+前端只感知小七行为和表达的变化,不直接读取 affection_score / trust / intimacy / defense_level / relationship_stage。
 ```
 
 ### 视觉身份
@@ -245,12 +254,13 @@ Prompt 编辑器
 4. 模型层下一步先替换 prompts/role/*.md，再接入 xiaoqi_prompt_package_v0.3.1 和 PromptRegistry。
 5. `/chat` 继续保持现有 SSE 与 message 字段，不因人格切换做 breaking change。
 6. quote_ref P0 继续只支持 type=message，并作为当前 user message prefix 注入模型上下文。
-7. 关系数值、防御值、hidden_mood、prompt、verifier_report 不返回 UI。
+7. 内部允许好感度/关系变量,但 affection_score、trust、intimacy、defense_level、relationship_stage、hidden_mood、prompt、verifier_report 不返回前端或 UI。
 8. PM 已拍板模型 Audit Q1-Q4：以服务器运行时 prompts 为实现权威；P1 先替换 5 份 role md；P4 CharacterState 走 DB；P5 TurnAnalyzer 先同进程 async。
 9. forbidden output 测试不得扫描历史协作文档，只扫运行时 prompt、后端用户可见模板和 runtime cards。
 10. 用户已确认 P1/P2 验收，并同意进入 P3 ContextBuilder。
 11. P3 必须补：runtime cards forbidden 测试、prompt/context 预算日志、unknown character fallback/fail-closed、schedule/proactive 工具播报过滤。
 12. 后续模型交付后的验收建议和下一阶段拍板，PM 必须先询问用户确认，再写协作文档。
+13. P4/P5 的内部关系状态方向保留,但 `GET /users/{id}/character_state` 不应继续向前端返回 `relationship_stage`;前端可见字段应限制为生活状态类字段,如 mood/current_activity/last_updated_at。
 ```
 
 ### 前端关于页文案

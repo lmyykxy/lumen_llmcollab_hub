@@ -46,3 +46,14 @@ Q4：P3 必须补 prompt/context 预算日志。
 Q5：unknown character 不得产生泛化助手人格，必须 fallback xiaoqi 或 fail closed。
 Q6：schedule/proactive 系统播报式话术进入硬过滤或重写范围。
 ```
+
+## 2026-04-28 内部好感度边界
+
+```text
+Q1：内部好感度/关系变量是必要能力,用于让小七态度随关系变化。
+Q2：允许使用 affection_score 或 trust / intimacy / defense_level / stage 等内部状态。
+Q3：关系变量不得以字段、数字、等级、进度条或任何 UI 形式暴露给前端。
+Q4：模型输出应体现行为变化,不应说出“好感度+1”“亲密度提升”等游戏化话术。
+Q5：`relationship_stage` 与 trust / intimacy / defense_level 一样,默认属于内部字段,不得进入前端 response。
+Q6：P4/P5 当前方向继续,但需要补一轮 API 脱敏调整和测试。
+```

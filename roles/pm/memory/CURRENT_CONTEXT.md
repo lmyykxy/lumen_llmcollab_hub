@@ -99,3 +99,16 @@ P3 必带约束：
 
 新流程规则：模型交付后的验收建议、下一阶段选择、是否授权继续，PM 必须先询问用户；用户确认后再写协作文档。
 ```
+
+## 2026-04-28 内部好感度边界
+
+```text
+用户已补充拍板：小七需要有内部好感度/关系变量,这样用户能从 AI 态度变化中感知关系推进；但这些变量不能给前端。
+
+PM 边界更新：
+1. 内部允许 affection_score 或 trust / intimacy / defense_level / stage 等关系变量。
+2. 这些变量只用于驱动语气、主动程度、私密分享、嘴硬/防御强度等行为变化。
+3. 前端/API 不得暴露 affection_score、trust、intimacy、defense_level、relationship_stage 或关系等级。
+4. P4 的 `GET /users/{id}/character_state` 当前返回 `relationship_stage`,需要模型/后端调整为不返回。
+5. P3/P4/P5 的正式验收和 P6 授权仍需先问用户确认。
+```

@@ -69,3 +69,14 @@ Q5：unknown character 必须 fallback xiaoqi 或 fail closed，不得生成 gen
 Q6：schedule/proactive 系统播报式话术必须硬过滤或重写。
 Q7：后续模型交付后的验收建议、下一阶段选择、是否授权继续，PM 必须先询问用户确认。
 ```
+
+## 2026-04-28 内部好感度边界
+
+```text
+Q1：项目需要内部好感度/关系变量,用于让用户明显感知小七态度随关系变化。
+Q2：内部变量可以是 affection_score,也可以由 trust / intimacy / defense_level / stage 等组合表达。
+Q3：这些变量不得返回前端,不得做 UI 数字、进度条、关系等级或恋爱模拟器玩法。
+Q4：前端只应通过小七的回复语气、主动程度、分享边界、生活状态感知变化。
+Q5：`GET /users/{id}/character_state` 不应返回 `relationship_stage`;P4 当前实现需调整。
+Q6：P5 TurnAnalyzer 更新 trust / intimacy / defense_level 的方向保留,但输出边界必须守住。
+```

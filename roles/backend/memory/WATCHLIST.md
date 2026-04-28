@@ -13,4 +13,5 @@
 4. 小七人格被写成工具助手。
 5. 视觉身份锚点被错误固定或错误放开。
 6. 协作文件没有同步到 latest docs tracker。
+7. `relationship_stage`、trust、intimacy、defense_level、affection_score 被意外返回给前端。
 ```
