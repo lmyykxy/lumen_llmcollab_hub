@@ -98,6 +98,8 @@ roles/{role}/_archive/
 | DOC-AND-001 | Android Handover | `roles/backend/completed_design_files/ANDROID_HANDOVER.md` | Backend | active | v 同步 2026-04-27 | 给安卓客户端的契约 + 实现要点（**权威源在主项目**） |
 | DOC-BE-RPT-001 | 后端工作汇报 2026-04-26 | `roles/backend/completed_design_files/工作汇报_2026-04-26_后端.md` | Backend | active | v0.1 | 后端 hotfix 序列 + 接口契约摘要 |
 | DOC-BE-RPT-002 | 后端工作汇报 2026-04-27 | `roles/backend/completed_design_files/工作汇报_2026-04-27_后端.md` | Backend | active | v0.1 | 联调期 7 轮 hotfix + 观测性 + orphan cleanup + 主动消息文档化;**含 PM 阻塞项 Q1**(OpenAI 组织验证) |
+| DOC-MODEL-RPT-P1 | 模型层 P1 人格替换交付报告 | `docs/collaboration/model-layer/04_模型_P1人格替换交付报告.md` | Model | done | v0.1 | 5 份 role md 替换 + forbidden tests + 4 smoke 全过 |
+| DOC-MODEL-RPT-P2 | 模型层 P2 PromptRegistry 交付报告 | `docs/collaboration/model-layer/05_模型_P2交付报告.md` | Model | done | v0.1 | PromptRegistry 三层 cards + xiaoqi v0.3.1 入仓 + chat/scheduler 接入 + 10 单测 + 4 smoke 复测 |
 | DOC-DESIGN-001 | UI Brief A · Android Mockup | `roles/design/completed_design_files/ui_brief_A_android_mockup.md` | Design | active | v0.1 | Android 端 UI 设计参考 |
 | DOC-DESIGN-002 | UI Brief C · Moodboard | `roles/design/completed_design_files/ui_brief_C_moodboard.md` | Design | active | v0.1 | 整体视觉气质 / 色板 / 美术参考 |
 
@@ -110,7 +112,7 @@ roles/{role}/_archive/
 | API 接口契约 | `docs/collaboration/api/` | active | **跨角色单一权威**;后端 LLM 主维护,代码侧契约改动后同步本目录;详见 `docs/collaboration/api/README.md` |
 | quote_ref 聊天消息引用 | `docs/collaboration/quote-ref/` | active | PM 拍板 → 后端实现 → 联调期 7 轮改进 → 后端 OK,**等前端重跑用例 3/4** |
 | 主动消息(proactive messages)| `docs/collaboration/proactive-messages/` | active | 后端 Phase 2b-1 起已跑通,**前端待接入** `/users/{id}/subscribe` SSE |
-| 模型层 / 小七人格切换 | `docs/collaboration/model-layer/` | active | PM 已规划从运行时测试人格“暮”切到陆小七；当前提示词源为 `C:\Users\jyb17\Desktop\PM统筹\prompts`，下一步接入 PromptRegistry / ContextBuilder / xiaoqi v0.3.1 |
+| 模型层 / 小七人格切换 | `docs/collaboration/model-layer/` | active | P1(5 份 role md 替换)+ P2(PromptRegistry + xiaoqi v0.3.1 入仓 + chat/scheduler 接入)已完成；下一步等 PM 拍板 P3 ContextBuilder |
 | 前端静态文案 | `docs/collaboration/frontend-copy/` | active | PM 已给出「关于陆小七」「关于 Lumen」两页替换文案；前端需去除“暮”和工具化 AI 陪伴口径 |
 
 quote_ref 当前协作文件(按时间序):
@@ -132,6 +134,8 @@ model-layer 当前协作文件(按时间序):
 docs/collaboration/model-layer/01_PM_陆小七人格替换与模型层实现规划.md  # PM 给模型/后端 LLM 的人格切换与模型层实施规划
 docs/collaboration/model-layer/02_模型_对PM规划的回应Audit与执行计划.md  # 模型 Audit 结果 + 4 个 PM 待拍板问题
 docs/collaboration/model-layer/03_PM_对模型Audit回应与P1开工拍板.md     # PM 回答 Q1-Q4 + 授权开始 P1
+docs/collaboration/model-layer/04_模型_P1人格替换交付报告.md            # P1 交付:5 份 role md + forbidden tests + 4 smoke
+docs/collaboration/model-layer/05_模型_P2交付报告.md                   # P2 交付:PromptRegistry + xiaoqi v0.3.1 入仓 + chat/scheduler 接入
 ```
 
 frontend-copy 当前协作文件(按时间序):
