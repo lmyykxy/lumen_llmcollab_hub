@@ -103,6 +103,7 @@ roles/{role}/_archive/
 | DOC-MODEL-RPT-P3 | 模型层 P3 ContextBuilder 交付报告 | `docs/collaboration/model-layer/07_模型_P3交付报告.md` | Model | done | v0.1 | ContextBuilder + budget log + output_filters + unknown char fallback + runtime cards forbidden + 115 单测 + 5 smoke 全过 |
 | DOC-MODEL-RPT-P4 | 模型层 P4 CharacterState/RelationshipState DB 交付报告 | `docs/collaboration/model-layer/08_模型_P4交付报告.md` | Model | done | v0.1 | character_states / relationship_states 表 + GET /users/{id}/character_state 脱敏端点 + ContextBuilder 接入 + state prompt 注入(自然语言不是数值)+ 138 单测全过 |
 | DOC-MODEL-RPT-P5 | 模型层 P5 TurnAnalyzer 交付报告 | `docs/collaboration/model-layer/09_模型_P5交付报告.md` | Model | done | v0.1 | 异步复盘 LLM:每 N=3 用户消息触发 + Kimi K2.6 主 provider + JSON schema 校验 + stage 阶梯硬约束 + delta clamp + per-user lock + 166 单测 + 实测 state/memories 真的变了 |
+| DOC-MODEL-RPT-P41 | 模型层 P4.1 边界修正交付报告 | `docs/collaboration/model-layer/11_模型_P4.1边界修正交付报告.md` | Model | done | v0.1 | API 4 字段(移除 relationship_stage)+ output_filters 加 10 个游戏化词 + 测试 forbidden 扩到 10 字段 + 184 单测 + 高试探性 smoke 实测无关键词命中 + 内部 state/relationship 注入仍正常 |
 | DOC-DESIGN-001 | UI Brief A · Android Mockup | `roles/design/completed_design_files/ui_brief_A_android_mockup.md` | Design | active | v0.1 | Android 端 UI 设计参考 |
 | DOC-DESIGN-002 | UI Brief C · Moodboard | `roles/design/completed_design_files/ui_brief_C_moodboard.md` | Design | active | v0.1 | 整体视觉气质 / 色板 / 美术参考 |
 
@@ -115,7 +116,7 @@ roles/{role}/_archive/
 | API 接口契约 | `docs/collaboration/api/` | active | **跨角色单一权威**;后端 LLM 主维护,代码侧契约改动后同步本目录;详见 `docs/collaboration/api/README.md` |
 | quote_ref 聊天消息引用 | `docs/collaboration/quote-ref/` | active | PM 拍板 → 后端实现 → 联调期 7 轮改进 → 后端 OK,**等前端重跑用例 3/4** |
 | 主动消息(proactive messages)| `docs/collaboration/proactive-messages/` | active | 后端 Phase 2b-1 起已跑通,**前端待接入** `/users/{id}/subscribe` SSE |
-| 模型层 / 小七人格切换 | `docs/collaboration/model-layer/` | active | P1 / P2 / P3 / P4 / P5(TurnAnalyzer 异步复盘:每 N=3 用户消息触发 + Kimi K2.6 主 provider + 4 层硬约束 + state 真的会变了)已完成;166 单测全过;实测 prompt_summary / trust+1 / memories+3;PM 已补充内部好感度边界:内部可有关系变量,但不得返回前端;P4 需调整 `relationship_stage` 暴露;P6 授权需等用户确认 |
+| 模型层 / 小七人格切换 | `docs/collaboration/model-layer/` | active | P1 / P2 / P3 / P4 / P5 / **P4.1**(API 4 字段移除 relationship_stage + output_filters 加 10 个游戏化词 + 184 单测)已完成;实测高试探性提问"你最近态度有变化吗" → 小七回"现在还会催你睡觉"零游戏化词;等 PM 转用户拍板 P6 |
 | 前端静态文案 | `docs/collaboration/frontend-copy/` | active | PM 已给出「关于陆小七」「关于 Lumen」两页替换文案；前端需去除“暮”和工具化 AI 陪伴口径 |
 
 quote_ref 当前协作文件(按时间序):
@@ -144,6 +145,7 @@ docs/collaboration/model-layer/07_模型_P3交付报告.md                   # P
 docs/collaboration/model-layer/08_模型_P4交付报告.md                   # P4 交付:character_states / relationship_states DB + GET /character_state 脱敏端点 + state prompt 注入 + 138 单测
 docs/collaboration/model-layer/09_模型_P5交付报告.md                   # P5 交付:TurnAnalyzer 异步复盘(每 N=3 触发 + Kimi 主 provider + JSON schema + stage 阶梯 + delta clamp + per-user lock)+ 166 单测 + 实测 state 真的变了
 docs/collaboration/model-layer/10_PM_内部好感度边界与P3P4P5反馈.md      # PM 补充拍板:内部好感度/关系变量允许,前端/API 不暴露关系数值或 relationship_stage
+docs/collaboration/model-layer/11_模型_P4.1边界修正交付报告.md           # P4.1 修正:CharacterStateResponse 4 字段 + output_filters 加 10 游戏化词 + 184 单测 + 高试探性 smoke 通过
 ```
 
 frontend-copy 当前协作文件(按时间序):
