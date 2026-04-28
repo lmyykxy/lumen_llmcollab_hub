@@ -109,6 +109,7 @@ roles/{role}/_archive/
 | DOC-MODEL-RPT-P6 | 模型层 P6 ImageIntentBuilder 交付报告 | `docs/collaboration/model-layer/17_模型_P6交付报告.md` | Model | done | v0.1 | 新模块 image_intent_builder.py(370 行)+ ImageIntent dataclass(PM §5.2 字段全覆盖)+ subject 识别(PM §5.4 触发 + POV 场景覆盖)+ state→画面措辞 + 视觉锚点 + xiaoqi.png 强制参考(fail-closed)+ generate_image executor 接入 + 45 单测 + 总 254 单测 + smoke 通过(身份锁住 + caption"你别盯着看") |
 | DOC-MODEL-RPT-P61 | 模型层 P6.1 ImageIntent hotfix 交付报告 | `docs/collaboration/model-layer/19_模型_P6.1交付报告.md` | Model | done | v0.1 | "画我自己" 移到 user_self subject(不用 xiaoqi.png)+ expression_intent/body_language_hint 7 类语义+state 兜底 + DrawDecision 概率 gate(普通场景=1.0,xiaoqi medium/high 按 trust-defense 调,关系疏远大概率不画)+ 288 单测 + smoke A "画我自己" + smoke B "画一张你生气的样子"(嘟嘴双臂交叉)+ smoke C "画你窗外"(POV override 不用 xiaoqi.png) |
 | DOC-MODEL-RPT-P62 | 模型层 P6.2 POV 撤回修正报告 | `docs/collaboration/model-layer/20_模型_P6.2修正报告.md` | Model | done(等 PM 重审) | v0.1 | 用户审视实际生成图后拍板 B:删 _POV_SCENE_OVERRIDES,"画你窗外/画你的房间" 走 xiaoqi self → 用 xiaoqi.png + 场景在 prompt;跟 PM `16_*.md` §6.9("画你窗外不应使用 xiaoqi.png")**直接冲突**,等 PM 重审 §6.9;290 单测;实测中等关系下生成图为"小七在窗边",身份锚点全保留 |
+| DOC-MODEL-RPT-P63 | 模型层 P6.3 工具描述 6 维度 prompt 工程 | `docs/collaboration/model-layer/23_模型_P6.3工具描述6维度提示词工程.md` | Model | done | v0.1 | 用户拍板纯 prompt 工程:改 generate_image 工具描述加 6 维度(主体/动作视角/场景/构图/光照/风格)+ 含/不含小七反例正例;LLM 立刻按引导写丰富 prompt(实测 LLM 主动写"sitting by windowsill from behind, side profile looking out");生成图从 P6.2 正脸 portrait 升级到小七侧脸看窗外 + 暖黄台灯 vs 冷蓝窗外对比光照;代码 0 改,290 单测仍过 |
 | DOC-PM-MODEL-P61-GATE | P6 验收前修正要求:表情与关系触发 | `docs/collaboration/model-layer/18_PM_P6验收前修正要求_表情与关系触发.md` | PM | active | v0.1 | PM 拍板 P6.1 hotfix:表情必须进 final_prompt;DrawDecision 概率式不画(关系疏远更大概率拒);"画我自己"不得误用 xiaoqi.png |
 | DOC-PM-MODEL-P7 | P7 目的性上下文构造与按需 Skill 读取规划 | `docs/collaboration/model-layer/21_PM_P7目的性上下文构造与按需Skill读取规划.md` | PM | active | v0.1 | 用户提出 ContextBuilder 应更有目的性；PM 规划 Resident Core / Turn State / Skill Index / Demand Skills 四层结构,由状态和意图触发 read_skill,如“你今天在做什么→卧室→读取卧室 skill” |
 | DOC-PM-MODEL-P7-DEEP | P7 深度设计：角色上下文编排与按需 Skill 读取 | `docs/collaboration/model-layer/22_PM_P7深度设计_角色上下文编排方案.md` | PM | active | v0.2 | 对比现有 Skills/RAG/Router/Plugin/Tool 模式后定案 Hybrid Purposeful Context Orchestrator；首批 6 个 skill、规则路由优先、状态优先、最多 3 个 skill、skill 内容不得前端可见 |
@@ -127,7 +128,7 @@ roles/{role}/_archive/
 | API 接口契约 | `docs/collaboration/api/` | active | **跨角色单一权威**;后端 LLM 主维护,代码侧契约改动后同步本目录;详见 `docs/collaboration/api/README.md` |
 | quote_ref 聊天消息引用 | `docs/collaboration/quote-ref/` | active | PM 拍板 → 后端实现 → 联调期 7 轮改进 → 后端 OK,**等前端重跑用例 3/4** |
 | 主动消息(proactive messages)| `docs/collaboration/proactive-messages/` | active | 后端 Phase 2b-1 起已跑通,**前端待接入** `/users/{id}/subscribe` SSE |
-| 模型层 / 小七人格切换 | `docs/collaboration/model-layer/` | active | P3-P6 / P6.1 / **P6.2** 已交付;P7 深度设计完成:不采用纯 RAG/全量 prompt/纯 planner,采用 Hybrid Purposeful Context Orchestrator,常驻核心 + 状态优先 + 白名单 skill 按需读取,保护小七角色输出 |
+| 模型层 / 小七人格切换 | `docs/collaboration/model-layer/` | active | P3-P6 / P6.1 / P6.2 / **P6.3** 已交付;**P6.3** 改 generate_image 工具描述加 6 维度(主体/动作视角/场景/构图/光照/风格),smoke 实测小七从正脸 portrait 升级到侧脸看窗外;P7 深度设计完成(Hybrid Purposeful Context Orchestrator),等用户拍板开工;P6.2 跟 §6.9 仍冲突等 PM 重审 |
 | 前端静态文案 | `docs/collaboration/frontend-copy/` | active | PM 已给出「关于陆小七」「关于 Lumen」两页替换文案；前端需去除“暮”和工具化 AI 陪伴口径 |
 
 quote_ref 当前协作文件(按时间序):
@@ -168,6 +169,7 @@ docs/collaboration/model-layer/19_模型_P6.1交付报告.md                   #
 docs/collaboration/model-layer/20_模型_P6.2修正报告.md                   # P6.2 用户拍板修正:删 POV override 让"画你窗外/画你的房间"走 xiaoqi self;跟 PM §6.9 冲突等重审;实测 smoke 含小七的窗边画面
 docs/collaboration/model-layer/21_PM_P7目的性上下文构造与按需Skill读取规划.md # P7 规划:Resident Core + Turn State + Skill Index + Demand Skills,按目的 read_skill
 docs/collaboration/model-layer/22_PM_P7深度设计_角色上下文编排方案.md       # P7 v0.2 深度设计:对比现有方案后定案混合式上下文编排,首批 6 个 skill + 规则路由优先
+docs/collaboration/model-layer/23_模型_P6.3工具描述6维度提示词工程.md     # P6.3 纯 prompt 工程:工具描述加 6 维度(主体/动作视角/场景/构图/光照/风格)+ 反例正例;LLM 写更结构化 prompt;smoke 实测从正脸 portrait 提升到小七侧脸看窗外
 ```
 
 frontend-copy 当前协作文件(按时间序):
