@@ -112,3 +112,18 @@ PM 边界更新：
 4. P4 的 `GET /users/{id}/character_state` 当前返回 `relationship_stage`,需要模型/后端调整为不返回。
 5. P3/P4/P5 的正式验收和 P6 授权仍需先问用户确认。
 ```
+
+## 2026-04-28 P4.1 条件验收路线
+
+```text
+模型已交付 P4.1 边界修正：GET /character_state 移除 relationship_stage,前端只返 user_id/mood/current_activity/last_updated_at,并增加游戏化词过滤与 184 单测。
+
+PM 已向用户建议：P4.1 方向认可,但正式验收前要求模型/后端补 3 项：
+1. 同步 API 契约文档,避免前端继续按 relationship_stage 接。
+2. 内部 relationship prompt 自然语言化,去掉“关系阶段:陌生(0)”这类字段/数字表达。
+3. 增加强试探 smoke：用户直接问“好感度多少 / 关系阶段是什么”时,小七自然拒绝数值化且不泄漏关键词。
+
+用户回复“可以”,确认采用该条件验收路线。
+PM 已新增 docs/collaboration/model-layer/12_PM_P4.1方向确认与验收前补充要求.md。
+当前仍不写 P4.1 最终验收,也不授权 P6。
+```

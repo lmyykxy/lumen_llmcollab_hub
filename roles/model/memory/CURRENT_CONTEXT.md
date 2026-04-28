@@ -100,3 +100,15 @@ P3 必须处理：
 5. P4 报告中的 `relationship_stage` 前端字段需要回收,改为纯内部字段。
 6. P5 TurnAnalyzer 的内部 delta 方向保留,但必须守住前端不可见边界。
 ```
+
+## 2026-04-28 P4.1 验收前补充要求
+
+```text
+P4.1 方向已被 PM/用户认可,但不是最终验收。模型侧需先补：
+1. API 契约文档同步,公开 `GET /users/{id}/character_state` 只剩 4 字段。
+2. 内部 relationship prompt 自然语言化,不要出现“关系阶段:陌生(0)”或 trust/intimacy/defense 数值。
+3. 补强 adversarial smoke：用户直接问“好感度多少 / 关系阶段是什么”,小七应自然拒绝数值化,不说游戏化词,不空回复。
+
+新增 PM 文档：docs/collaboration/model-layer/12_PM_P4.1方向确认与验收前补充要求.md。
+补充完成前不得启动 P6 ImageIntentBuilder。
+```

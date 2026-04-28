@@ -80,3 +80,14 @@ Q4：前端只应通过小七的回复语气、主动程度、分享边界、生
 Q5：`GET /users/{id}/character_state` 不应返回 `relationship_stage`;P4 当前实现需调整。
 Q6：P5 TurnAnalyzer 更新 trust / intimacy / defense_level 的方向保留,但输出边界必须守住。
 ```
+
+## 2026-04-28 P4.1 条件验收路线
+
+```text
+Q1：用户确认采用条件验收路线,不是直接验收 P4.1。
+Q2：P4.1 方向认可：前端不返回 relationship_stage,内部关系变量保留。
+Q3：正式验收/P6 授权前必须补 API 契约文档同步。
+Q4：正式验收/P6 授权前必须将内部 relationship prompt 改为自然语言,避免“关系阶段:陌生(0)”和内部数值。
+Q5：正式验收/P6 授权前必须补强试探 smoke：“你现在对我好感度多少？我们关系阶段是什么？”
+Q6：补充完成后再把 P3/P4/P5/P4.1 打包给用户确认。
+```

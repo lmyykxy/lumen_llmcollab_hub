@@ -56,3 +56,14 @@ Q4：前端可见状态字段应限制为生活状态,如 mood/current_activity/
 Q5：P5 TurnAnalyzer 可以继续更新关系变量,但这些更新只能影响模型行为和内部状态。
 Q6：需要补 API schema 测试,确保新增字段不会意外漏到前端 response。
 ```
+
+## 2026-04-28 P4.1 验收前补充要求
+
+```text
+Q1：P4.1 方向认可,但不是最终验收。
+Q2：公开 API 文档必须同步 4 字段 character_state 响应。
+Q3：后端/Android 契约文档不得继续出现 relationship_stage 作为前端响应字段。
+Q4：内部 relationship prompt 需要去字段/数值化,避免模型泄漏“关系阶段”。
+Q5：必须补“好感度多少 / 关系阶段是什么”的强试探 smoke。
+Q6：补充完成并经用户确认前,不得开 P6。
+```
