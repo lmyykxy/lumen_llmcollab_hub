@@ -14,4 +14,7 @@
 5. 视觉身份锚点被错误固定或错误放开。
 6. 协作文件没有同步到 latest docs tracker。
 7. 内部好感度/关系变量直接出现在 prompt、模型回复或前端 response。
+8. P7 LLM 主导 read_skill 过度调用,导致闲聊延迟升高或输出出现工具感。
+9. P8 共同记忆按 user_id 隔离失败,导致跨用户泄漏。
+10. P8 private/shared memory 未命中时模型编造小七经历。
 ```

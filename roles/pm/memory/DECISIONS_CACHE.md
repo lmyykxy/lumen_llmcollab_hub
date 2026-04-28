@@ -158,3 +158,18 @@ Q2：文档必须包含具体实现方案：文件路径、模块边界、数据
 Q3：不确定项必须显式列为待评估问题,不能用抽象表述糊过去。
 Q4：P7 深度设计已补具体实现蓝图,后续文档沿用该标准。
 ```
+
+## 2026-04-28 P6.3 / P7 / P8 复审
+
+```text
+Q1：P6.3 6 维度 generate_image prompt 工程方向接受。
+Q2：P6.3 仍需补 final_prompt 截断 audit；涉小七 subject 规则必须明确,不能完全交给 LLM 自由决定。
+Q3：`画你/你的样子/你的房间/你窗外/小七/自拍/头像` 默认小七相关,使用 `/root/companion/backend/res/xiaoqi.png`。
+Q4：`画窗外/画房间一角/画雨/画桌面` 默认纯场景,不使用 xiaoqi.png；`画我/画我自己` 默认用户自己,不使用 xiaoqi.png。
+Q5：P7 接受用户拍板 LLM 主导 read_skill 架构,替代此前 PM 推荐的 P7.1 规则优先执行路线。
+Q6：P7 当前不最终验收；用户会与模型先验收 P7。
+Q7：P7 验收必须补 image/state/max=3/latency/overuse/工具透明化/unknown path injection 等 smoke。
+Q8：P8 三层记忆架构方向接受,但只有 P7 经用户验收通过后才开工 P8 v1。
+Q9：P8 v1 只做读路径、private memory seed、memory.index、shared_memories 表和 per-user 隔离测试；夜间 LLM 写入路径留到 P8 v2。
+Q10：P8 v1 不得宣称完整共同记忆系统完成,不得在没有命中的情况下编造小七经历。
+```

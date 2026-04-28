@@ -235,3 +235,21 @@ PM 后续写给模型/后端/前端的规划文档必须包含：
 若无法确定实现细节,必须列为待模型/后端评估问题,不得用抽象概念替代实现方案。
 P7 v0.2 已补 concrete implementation blueprint。
 ```
+
+## 2026-04-28 P6.3 / P7 / P8 复审与条件授权
+
+```text
+模型提交了 P6.3、P7 用户拍板 LLM 主导方案、P7 交付报告和 P8 记忆 Skill 系统提案。
+
+PM 已新增：
+docs/collaboration/model-layer/27_PM_P6.3_P7_P8复审与P8条件授权.md
+
+复审结论：
+1. P6.3 6 维度 prompt 工程方向接受,但必须补 final_prompt 截断 audit,并把“含/不含小七由 LLM 自己决定”收紧为明确 subject 规则。
+2. P7 接受用户拍板的 LLM 主导 read_skill 架构,替代此前 PM 推荐的规则优先执行路线。
+3. P7 当前不最终验收,用户会与模型先验收 P7。
+4. P7 必补 smoke:普通闲聊 0 skill、你今天在做什么、你的房间、画你窗外、画窗外的雨、关系试探、max=3、unknown/path injection。
+5. P7 必须补延迟、过度调用、工具透明化输出观察。
+6. P8 三层记忆架构方向接受,但只有 P7 经用户验收通过后才开工 P8 v1。
+7. P8 v1 只做 read path、private memory seed、memory.index、shared_memories 表和 per-user 隔离测试;不做夜间 LLM 写入路径。
+```

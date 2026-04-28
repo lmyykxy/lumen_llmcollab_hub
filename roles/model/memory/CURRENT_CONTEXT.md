@@ -187,3 +187,19 @@ docs/collaboration/model-layer/22_PM_P7深度设计_角色上下文编排方案.
 7. P7 v0.2 已补具体实现蓝图：建议路径、SkillRegistry / ContextOrchestrator 接口、路由伪代码、预算常量、日志字段和测试文件。
 8. 后续模型回报也应避免只讲概念,必须列实际改动路径、数据结构、算法、测试和 smoke。
 ```
+
+## 2026-04-28 P6.3 / P7 / P8 PM 复审
+
+```text
+PM 已新增：
+docs/collaboration/model-layer/27_PM_P6.3_P7_P8复审与P8条件授权.md。
+
+模型侧执行结论：
+1. P6.3 方向接受,但需要补 final_prompt 截断 audit,并收紧小七/纯场景/user_self subject 规则。
+2. P7 接受用户拍板的 LLM 主导 read_skill 架构,不要求回滚到规则优先版。
+3. P7 当前不是最终验收,用户会先跟模型验收 P7。
+4. P7 验收必须补:画你窗外、画窗外的雨、你今天在做什么、max=3、闲聊误调、unknown/path injection、延迟和工具透明化。
+5. P8 三层记忆架构方向接受,但必须等 P7 验收通过后再开工。
+6. P8 v1 只做读路径、private memory seed、xiaoqi.memory.index、shared_memories 表和 per-user 隔离测试。
+7. P8 v1 不做夜间 LLM 写入路径,不得宣称共同记忆完整完成,不得编造未命中的小七经历。
+```
