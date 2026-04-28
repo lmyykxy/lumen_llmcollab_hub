@@ -116,4 +116,5 @@ Q2：SkillRegistry 必须白名单化,read_skill 不能任意读文件路径。
 Q3：每轮最多 3 个 skill,技能总预算默认不超过 2500 chars。
 Q4：普通闲聊应不加载 room/image/diary 等 skill。
 Q5：unknown skill / skill over budget / skill conflict 都必须有 fail-closed 策略和日志。
+Q6：后端规划/交付文档必须写清具体实现方案,不得只写架构概念。
 ```

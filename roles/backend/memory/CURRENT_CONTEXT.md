@@ -210,4 +210,5 @@ docs/collaboration/model-layer/22_PM_P7深度设计_角色上下文编排方案.
 4. context_budget 增加 skill_ids / skills_total / skills_loaded_count。
 5. skill 内容、routing reason、prompt 不得返回前端或 SSE。
 6. unknown skill / over budget 必须 fail closed,不能让模型编造房间设定。
+7. P7 v0.2 已补具体实现蓝图,后端回报需列实际文件路径、接口、预算常量、日志字段、测试文件和 smoke。
 ```

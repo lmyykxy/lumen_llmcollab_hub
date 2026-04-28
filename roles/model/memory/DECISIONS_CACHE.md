@@ -120,4 +120,5 @@ Q3：P7 不做每轮纯 LLM planner,避免成本/延迟/工具感。
 Q4：P7.1 先规则路由,必要时 P7.2 才加 read_skill tool call。
 Q5：skill 文件必须包含“如何少说/不说”的 negative guidance,防止小七背设定。
 Q6：context_budget 必须记录 skill_ids、skills_total、skills_loaded_count。
+Q7：模型交付报告必须给出具体实现路径、接口、伪代码/算法、测试与 smoke,不得只复述概念。
 ```

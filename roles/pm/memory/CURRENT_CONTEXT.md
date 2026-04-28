@@ -216,3 +216,22 @@ docs/collaboration/model-layer/22_PM_P7深度设计_角色上下文编排方案.
 7. 首批只做 6 个 skill：bedroom、window、image_self、image_scene、diary_moment、relationship_voice。
 8. 每轮最多 3 个 skill,普通闲聊应 0 skill,skill 内容不得对前端可见。
 ```
+
+## 2026-04-28 PM 文档质量硬约束
+
+```text
+用户要求：给过去的文档一定要描述明确,避免只有概念没有具体实现方案。
+
+PM 后续写给模型/后端/前端的规划文档必须包含：
+1. 目标 / 非目标。
+2. 影响范围和不改哪些接口。
+3. 建议文件路径或模块边界。
+4. 数据结构 / schema / 字段。
+5. 核心算法、流程或伪代码。
+6. 失败策略和边界条件。
+7. 测试清单、smoke 输入输出和验收标准。
+8. 风险和下一步。
+
+若无法确定实现细节,必须列为待模型/后端评估问题,不得用抽象概念替代实现方案。
+P7 v0.2 已补 concrete implementation blueprint。
+```

@@ -184,4 +184,6 @@ docs/collaboration/model-layer/22_PM_P7深度设计_角色上下文编排方案.
 4. 首批只做 6 个 skill：bedroom、window、image_self、image_scene、diary_moment、relationship_voice。
 5. 每轮最多 3 个 skill,普通闲聊应不读无关 skill。
 6. 输出中不得出现“读取 skill / 根据设定 / 上下文显示”等内部机制词。
+7. P7 v0.2 已补具体实现蓝图：建议路径、SkillRegistry / ContextOrchestrator 接口、路由伪代码、预算常量、日志字段和测试文件。
+8. 后续模型回报也应避免只讲概念,必须列实际改动路径、数据结构、算法、测试和 smoke。
 ```
